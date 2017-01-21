@@ -44,6 +44,11 @@ $config = [
         'db' => require(__DIR__ . '/db.php'),
     ],
     'params' => $params,
+        'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin',
+        ],
+    ],
 ];
 
 if (YII_ENV_DEV) {

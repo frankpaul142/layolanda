@@ -22,7 +22,11 @@
         "kartik-v/yii2-export": "*",
         "kartik-v/yii2-mpdf": "@dev",
         "kartik-v/yii2-editable": "*",
-        "kartik-v/yii2-widgets": "@dev"
+        "kartik-v/yii2-widgets": "@dev",
+        "omnilight/yii2-shopping-cart": "*",
+        "kartik-v/yii2-password": "@dev",
+        "machour/yii2-notifications": "@dev",
+        "paypal/rest-api-sdk-php": "*"
     },
     "require-dev": {
         "codeception/codeception": "*",
