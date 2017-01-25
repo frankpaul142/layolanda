@@ -7,8 +7,9 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
+use app\models\ForgotForm;
 use app\models\ContactForm;
-
+use app\models\User;
 class SiteController extends Controller
 {
     public function behaviors()
@@ -23,12 +24,6 @@ class SiteController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                     ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
                 ],
             ],
         ];
@@ -67,6 +62,70 @@ class SiteController extends Controller
             ]);
         }
     }
+    public function actionAddtocart($id,$fragrance=0){
+            $cart = Yii::$app->cart;
+
+            if($fragrance==0){
+            $model = SapCode::find()->where(['id'=>$id])->one();
+                }else{
+                    $model = SapCode::find()->where(['id'=>$id,'fragrance_id' => $fragrance])->one();
+                }
+            if ($model) {
+                $cart->put($model, 1);
+                //die(print_r($cart));
+                return $this->redirect(['viewcart']);
+            }
+            Yii::$app->getSession()->setFlash('warning','Por favor escoja una medida.');
+            return $this->redirect(Yii::$app->request->referrer);
+    }
+    public function actionRemovefromcart($id){
+            $cart = Yii::$app->cart;
+            $model = SapCode::find()->where(['id'=>$id])->one();
+            if ($model){
+                $cart->remove($model);
+                //die(print_r($cart));
+                return $this->redirect(['viewcart']);
+            }
+        throw new NotFoundHttpException();
+
+    }
+    public function actionUpdatefromcart($id,$quantity){
+                $cart = Yii::$app->cart;
+
+            $model = SapCode::find()->where(['id'=>$id])->one();
+            if ($model) {
+                $cart->update($model,$quantity);
+                //die(print_r($cart));
+                return $this->redirect(['viewcart']);
+            }
+        throw new NotFoundHttpException();
+
+    }
+
+    public function actionViewcart(){
+        $number=Yii::$app->cart->getCost(true);
+        if($number<200){
+            $cart = Yii::$app->cart;
+            $model = SapCode::find()->where(['id'=>70000076])->one();
+
+            if ($model && !isset($cart->positions[70000076])) {
+                $cart->put($model, 1);
+                //die(print_r($cart));
+              
+            }
+        }else{
+            $cart = Yii::$app->cart;
+
+            $model = SapCode::find()->where(['id'=>70000076])->one();
+
+            if ($model && isset($cart->positions[70000076])) {
+                $cart->remove($model);
+                //die(print_r($cart));
+              
+            }
+        }
+        return $this->render('cart');   
+    }
 
     public function actionLogout()
     {
@@ -93,4 +152,114 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+       public function actionForgot()
+   {
+
+          
+          if (!\Yii::$app->user->isGuest) {
+        return $this->goHome();
+    }
+       $model = new ForgotForm();
+           if ($model->load(Yii::$app->request->post()) && $model->find()) {
+            $user=$model->find();
+            $user->generatePasswordResetToken();
+            if($user->save()){
+              $email=  Yii::$app->mailer->compose('reset', [
+            'names' => $user->names,
+            'url' => Yii::$app->urlManager->createAbsoluteUrl(['site/reset','token'=>$user->password_reset_token])
+            ])->setFrom('info@layolanda.com')
+            ->setTo($user->username)
+            ->setSubject($user->names." "."Resetea tu cuenta en LAYOLANDA")
+            ->send();
+                    if($email){
+                        Yii::$app->getSession()->setFlash('success','No te olvides de revisar en la bandeja de spam.');
+                    }
+                    else{
+                        Yii::$app->getSession()->setFlash('warning','Un error ha ocurrido por favor contactate con soporte técnico.');
+                    }
+                    return $this->goHome();
+            }else{
+              Yii::$app->getSession()->setFlash('warning','Un error ha ocurrido por favor contactate con soporte técnico.');  
+              return $this->goHome();
+            }
+           
+    }
+        return $this->render('forgot', [
+            'model' => $model,
+            ]);
+
+}
+    public function actionReset($token){
+    $user= User::findByPasswordResetToken($token);
+     $model= New ResetForm;
+    if ($model->load(Yii::$app->request->post())) {
+        if($user){
+            $user->removePasswordResetToken();
+            $user->password=md5($model->password);
+            $user->save();
+         Yii::$app->getSession()->setFlash('success','Su password ha sido cambiado con éxito.');
+           return $this->goHome(); 
+
+        }else{   
+           Yii::$app->getSession()->setFlash('warning','El token de seguridad es inválido o ya ha expirado.');
+           return $this->goHome(); 
+        }
+    }
+     return $this->render('reset', [
+        'model' => $model,
+        ]);
+
+        }
+    public function actionRegister(){
+      $model = new User();
+      $model->scenario="create";
+      $model->type="CLIENT";
+      $model->creation_date=date("Y-m-d H:i:s");
+      if ($model->load(Yii::$app->request->post()) && $model->save()) {
+      $email=  Yii::$app->mailer->compose('confirm', [
+    'model' => $model,
+    'url' => Yii::$app->urlManager->createAbsoluteUrl(['site/confirm','id'=>$model->id,'key'=>$model->auth_key])
+    ])->setFrom('info@layolanda.com')
+    ->setTo($model->username)
+    ->setSubject($model->names." "."Confirma tu cuenta en LAYOLANDA")
+    ->send();
+        if($email){
+            Yii::$app->getSession()->setFlash('success','No te olvides de revisar en la bandeja de spam.');
+        }
+        else{
+            Yii::$app->getSession()->setFlash('warning','Un error ha ocurrido por favor contactate con soporte técnico.');
+        }
+        return $this->redirect(['congrats', 'id' => $model->id]);
+
+    } else {
+        return $this->render('register', [
+            'model' => $model,
+            ]);
+    }
+    }
+        public function actionConfirm($id, $key)
+    {
+        $user = User::find()->where([
+        'id'=>$id,
+        'auth_key'=>$key,
+        'status'=>'INACTIVE',
+        ])->one();
+        if(!empty($user)){
+        
+        $user->status='ACTIVE';
+        $user->save();
+        Yii::$app->getSession()->setFlash('success','Felicidades tu cuenta ya está activa.');
+        }
+        else{
+        Yii::$app->getSession()->setFlash('warning','Error, tu cuenta no pudo ser activada');
+        }
+        return $this->goHome();
+    }
+        public function actionCongrats($id){
+        $model=User::findOne($id);
+       return $this->render('congrats', [
+            'model' => $model,
+            ]); 
+    }
+
 }

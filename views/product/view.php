@@ -10,11 +10,22 @@ use yii\helpers\Url;
 
 $this->title = $model->id;
 $script=<<< JS
-$('.grid').masonry({
-  // options
-  itemSelector: '.grid-item',
+  var freeMasonry = $('.grid');
+
+  freeMasonry.imagesLoaded()
+    .done(function(){
+      freeMasonry.masonry({
+          itemSelector: '.grid-item',
 percentPosition: true,
-});
+      });
+    });
+// $( document ).ready(function() {
+// $('.grid').masonry({
+//   // options
+//   itemSelector: '.grid-item',
+// percentPosition: true,
+// });
+// });
 JS;
 $this->registerJs($script,View::POS_END);
 AppAsset::register($this);

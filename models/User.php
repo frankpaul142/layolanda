@@ -27,6 +27,8 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     /**
      * @inheritdoc
      */
+    public $accessToken;
+    public $confirmPassword;
     public static function tableName()
     {
         return 'user';
@@ -38,12 +40,16 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function rules()
     {
         return [
-            [['id', 'creation_date', 'names', 'lastnames', 'birthday', 'sex', 'type', 'password', 'auth_key'], 'required'],
+            [['creation_date', 'names', 'lastnames', 'birthday', 'sex', 'type', 'password','username'], 'required'],
             [['id'], 'integer'],
             [['creation_date', 'birthday'], 'safe'],
             [['sex', 'type'], 'string'],
             [['username', 'names', 'lastnames'], 'string', 'max' => 150],
             [['password', 'auth_key','password_reset_token'], 'string', 'max' => 255],
+            [['username'], 'unique', 'message'=>"Ya existe ese email en el sistema."],
+            [['username'], 'email'],
+            ['confirmPassword', 'compare', 'compareAttribute'=>'password', 'on' => 'create', 'message'=>"Las contraseñas deben ser iguales" ],
+            ['status', 'in', 'range' => ['ACTIVE','INACTIVE']]
         ];
     }
 

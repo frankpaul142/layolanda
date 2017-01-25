@@ -63,6 +63,7 @@ width: 100%;
     margin: 0;
     font-size: 12px;
     color: black;
+    margin-top: 1%;
 }
 .navbar-default .navbar-nav > li > a{
     color:black;
@@ -155,9 +156,9 @@ a.desc:after {
 }
 .main-menu{
         position: relative;
-    left: 30%;
-    width: 100%;
     font-size: 4.5mm;
+    width: auto;
+    left:-38%;
 }
 .navbar ul li:hover{
     text-decoration:underline;
@@ -227,12 +228,13 @@ font-weight: bold;
 .grid-item { width: 46%;margin-left: 1%; margin-bottom: 1% }
 .grid-item--width2 { width: 46%;margin-left: 1%; margin-bottom: 1%}
 .grid{
-    overflow-y:auto; 
-    min-height: 570px;
+/*    overflow-y:auto;
+    min-height: 770px; */
     margin: 0 auto;
+
 }
 .gallery{
-    height: 280px;
+    min-height: 360px;
     text-align: center;
 }
 .gallery p{
@@ -241,6 +243,31 @@ font-weight: bold;
 }
 .gallery img{
         margin-bottom: 10px;
+}
+.bag-layout{
+    padding: 0px !important;
+    padding-top: 36% !important;
+}
+.bag-layout img{
+    width: 27px;
+}
+.search-layout{
+    border: none;
+    /* margin-top: 4%; */
+    outline: none;
+    float: right;
+    height: 14px;
+    position: relative;
+    top: 16px;
+    z-index: 2;
+}
+.img-search{
+        position: relative;
+    top: -10px;
+    z-index: 1;
+}
+.search-container{
+    width: 180px;
 }
 /*.nav > li > a {
 padding: 0px;
@@ -273,3 +300,40 @@ h3{
 .more-products h3{
     padding-left: 17px;
 }
+@media screen and (max-width: 1700px){
+.main-menu {
+    left: -34%;
+}
+}
+@media screen and (max-width: 1480px){   
+.main-menu{
+    left:-30%;
+    }   
+}
+@media screen and (max-width: 1200px) {  
+.main-menu{
+    left:-24%;
+    }
+}
+        @media screen and (max-width: 1000px) {  
+.main-menu{
+    left:-19%;
+    }
+}
+.flash_message_success, .flash_message_warning{
+    width:100%;
+    position:fixed;
+    color:#FFF;
+    text-align:center;
+    z-index:1010;
+    background:rgba(0,0,0,0.8);
+    padding:10px 0;
+    top:0;
+    left:0;     
+    }
+.btn-cerrarw{
+    width:20px;
+    float:right;
+    margin:0 5px 0 0;
+    padding:0;
+    }

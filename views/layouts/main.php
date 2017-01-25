@@ -9,6 +9,13 @@ use yii\helpers\Url;
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+$script=<<< JS
+   $(".btn-cerrarw").click(function(){
+       $(".flash_message_warning").fadeOut();
+       $(".flash_message_success").fadeOut();
+       });
+JS;
+$this->registerJs($script,View::POS_END);
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -25,6 +32,18 @@ AppAsset::register($this);
 
 <?php $this->beginBody() ?>
     <div class="wrap">
+<?php if(Yii::$app->getSession()->getFlash('success')){ ?>
+<div class="flash_message_success">
+ <?= Yii::$app->getSession()->getFlash('success'); ?>
+ <div class="btn-cerrarw"><img src="<?= URL::base() ?>/images/btn-cerrarw.svg"/></div>
+</div>
+    <?php } ?>
+    <?php if(Yii::$app->getSession()->getFlash('warning')){ ?>
+<div class="flash_message_warning">
+ <?= Yii::$app->getSession()->getFlash('warning'); ?>
+  <div class="btn-cerrarw"><img src="<?= URL::base() ?>/images/btn-cerrarw.svg"/></div>
+</div>
+    <?php } ?>
         <nav class="navbar navbar-default">
           <div class="container-fluid collapse navbar-collapse header-top">
             <div class="navbar-header">
@@ -33,8 +52,18 @@ AppAsset::register($this);
               </a>
             </div>
         <ul class="nav navbar-nav">
-            <li><a href="#">Iniciar Sesión</a></li>
-            <li><a href="#">Buscar</a></li>
+            <li><a class="bag-layout" href="#"><img src="<?= URL::base() ?>/images/bag1.svg" /></a></li>
+            <?php if(Yii::$app->user->isGuest){ ?>
+            <li><a href="<?= Url::to(['site/login']) ?>">Iniciar Sesión</a></li>
+            <?php }else{ ?>
+            <li><a href="<?= Url::to(['user/index']) ?>"><?= Yii::$app->user->identity->names ?></a></li>
+            <li><a href="<?= Url::to(['site/logout']) ?>">Cerrar Sesión</a></li>
+            <?php } ?>
+            <li class="search-container">
+
+                <input class="search-layout" type="text" placeholder="search" />
+                <img class="img-search" src="<?= URL::base() ?>/images/lupa_.svg" />
+            </li>
         <ul>
           </div>
         </nav>
@@ -66,8 +95,8 @@ AppAsset::register($this);
 
     <footer class="footer">
         <div class="container">
-            <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-            <p class="pull-right"><?= Yii::powered() ?></p>
+            <!-- <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+            <p class="pull-right"><?= Yii::powered() ?></p> -->
         </div>
     </footer>
 
