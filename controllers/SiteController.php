@@ -10,6 +10,7 @@ use app\models\LoginForm;
 use app\models\ForgotForm;
 use app\models\ContactForm;
 use app\models\User;
+use app\models\Product;
 class SiteController extends Controller
 {
     public function behaviors()
@@ -44,7 +45,8 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        $products=Product::find()->where(['important'=>'YES'])->limit(3)->all();
+        return $this->render('index',['products'=>$products]);
     }
 
     public function actionLogin()

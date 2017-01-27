@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Product;
 use app\models\Category;
+use app\models\ProductHasMesureType;
 use app\models\ProductSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -54,11 +55,22 @@ class ProductController extends Controller
     {
         $model=$this->findModel($id);
         $categories=Category::find()->where(['category_id'=>$model->category->category->category_id])->all();
+        $types=ProductHasMesureType::find()->where(['product_id'=>$id])->all();
         return $this->render('view', [
-            'model' => $model,'categories'=>$categories
+            'model' => $model,'categories'=>$categories,'types'=>$types
         ]);
     }
-
+    public function actionConsultMesures()
+    {
+        $return=array();
+        $mesures=ProductHasMesureType::find()->where(['product_id'=>$_POST['product_id'],'type_id'=>$_POST['type']])->all();
+        foreach($mesures as $k => $mesure){
+            $return[$k]['id']=$mesure->id;
+            $return[$k]['description']=$mesure->mesure->description;
+            $return[$k]['price']=$mesure->price;
+        }
+        return json_encode($return);
+    }
     /**
      * Creates a new Product model.
      * If creation is successful, the browser will be redirected to the 'view' page.

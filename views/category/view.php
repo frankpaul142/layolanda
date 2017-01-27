@@ -3,44 +3,51 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\helpers\Url;
+use app\assets\AppAsset;
+use yii\web\View;
 /* @var $this yii\web\View */
 /* @var $model app\models\Category */
 
 $this->title = $model->description;
 // $this->params['breadcrumbs'][] = ['label' => 'Categories', 'url' => ['index']];
 // $this->params['breadcrumbs'][] = $this->title;
-
+$script=<<< JS
+var aux=$( ".selected" ).attr( "parent_cat" );
+$( ".category-"+aux ).click();
+JS;
+$this->registerJs($script,View::POS_END);
+AppAsset::register($this);
 ?>
-<div class="row">
+<div class="row container-category-product">
   <div class="col-sm-3 sidebar">
     <h2><?= $model->description ?></h2>
     <div class="sidebar-nav">
       <div class="navbar navbar-default" role="navigation">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+          <button  type="button" class="navbar-toggle button-menu3" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
           </button>
-          <span class="visible-xs navbar-brand">Sidebar menu</span>
         </div>
-        <div class="navbar-collapse collapse sidebar-navbar-collapse">
+        <div class="navbar-collapse collapse sidebar-navbar-collapse vertical-menu">
           <ul class="nav navbar-nav">
             <?php foreach($categories as  $category): ?>
-            <li ><a href="#"><?= $category->description ?></a>
+            <li ><a class="category-<?= $category->id ?>" data-toggle="collapse" data-target="#sub-menu-<?= $category->id ?>" href="#"><?= $category->description ?></a>
                 <?php if($category->categories): ?>
+                <div id="sub-menu-<?= $category->id ?>" class="collapse internal-sub-menu">
                 <ul class="nav navbar-nav sub-category">
                     <?php foreach($category->categories as $k => $subcategory): ?>
                     <?php $selected = ($k == 0) ? 'selected' : ''; ?>
-                    <li class="<?= $selected ?>" ><a href="#"><?= $subcategory->description ?></a>
+                    <li class="<?= $selected ?>" parent_cat="<?= $category->id ?>" ><a href="<?= Url::to(['category/view','id'=>$subcategory->id]) ?>"><?= $subcategory->description ?></a>
                     <?php endforeach; ?>
                 </ul>
+              </div>
                 <?php endif; ?>
             </li>
         <?php endforeach; ?>
           </ul>
-          <ul class="nav navbar-nav politics">
+          <ul class="nav navbar-nav politics collapse">
                 <li><a href="#">Envio</a></li>
                 <li><a href="#">Contáctenos</a></li>
                 <li><a href="#">¿Cómo Llegar?</a></li>

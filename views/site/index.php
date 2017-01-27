@@ -9,27 +9,17 @@ $this->title = 'LAYOLANDA | CONCEPT_STORE';
     <div class="body-content">
 
         <div class="row">
+            <?php foreach($products as $product): ?>
             <div class="col-lg-4 img-home">
-                
-
-                <img  src="<?= URL::base() ?>/images/foto1.jpg" class="img-fluid" />
-
-               <a  href="http://www.yiiframework.com/extensions/">El Beso</a>
+                <a  href="<?= Url::to(['product/view','id'=>$product->id]) ?>">
+            <?php foreach($product->pictures as $picture): ?>
+            <img src="<?= URL::base() ?>/images/products/<?= $picture->description ?>" />
+            <?php break; endforeach; ?>
+               <?= $product->title ?>
+                </a>
             </div>
-            <div class="col-lg-4 img-home">
-               
 
-                <img  src="<?= URL::base() ?>/images/foto2.jpg" class="img-fluid" />
-
-               <a  href="http://www.yiiframework.com/extensions/">El Beso</a>
-            </div>
-            <div class="col-lg-4 img-home">
-                
-
-                <img  src="<?= URL::base() ?>/images/foto3.jpg" class="img-fluid" />
-
-               <a  href="http://www.yiiframework.com/extensions/">El Beso</a>
-            </div>
+            <?php endforeach; ?>
         </div>
 
     </div>

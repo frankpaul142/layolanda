@@ -52,6 +52,8 @@ class Product extends \yii\db\ActiveRecord
             [['flowing_id'], 'exist', 'skipOnError' => true, 'targetClass' => Flowing::className(), 'targetAttribute' => ['flowing_id' => 'id']],
             [['material_id'], 'exist', 'skipOnError' => true, 'targetClass' => Material::className(), 'targetAttribute' => ['material_id' => 'id']],
             [['technique_id'], 'exist', 'skipOnError' => true, 'targetClass' => Technique::className(), 'targetAttribute' => ['technique_id' => 'id']],
+            ['important', 'in', 'range' => ['ACTIVE','INACTIVE']],
+            ['status', 'in', 'range' => ['ACTIVE','INACTIVE']]
         ];
     }
 
@@ -129,4 +131,12 @@ class Product extends \yii\db\ActiveRecord
     {
         return $this->hasMany(ProductHasMesureType::className(), ['product_id' => 'id']);
     }
+       public function getTypes()
+    {
+       return $this->hasMany(Type::className(),['id' => 'type_id'])->viaTable('product_has_mesure_type',['product_id' => 'id']);
+    }
+           public function getMesures()
+    {
+       return $this->hasMany(Mesure::className(),['id' => 'mesure_id'])->viaTable('product_has_mesure_type',['product_id' => 'id']);
+    }  
 }

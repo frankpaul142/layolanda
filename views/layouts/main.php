@@ -44,13 +44,18 @@ AppAsset::register($this);
   <div class="btn-cerrarw"><img src="<?= URL::base() ?>/images/btn-cerrarw.svg"/></div>
 </div>
     <?php } ?>
-        <nav class="navbar navbar-default">
-          <div class="container-fluid collapse navbar-collapse header-top">
-            <div class="navbar-header">
-              <a class="navbar-brand" href="<?= URL::base() ?>">
+        <nav  id="nav-menu2"class="navbar navbar-default" role="navigation">
+  <div class="navbar-header">
+             <a class="navbar-brand" href="<?= URL::base() ?>">
                 <img alt="Brand" src="<?= URL::base() ?>/images/logo.png">
               </a>
-            </div>
+    </div>
+          <div id="top-menu" class="container-fluid">
+            
+   <!--            <a class="navbar-brand" href="<?= URL::base() ?>">
+                <img alt="Brand" src="<?= URL::base() ?>/images/logo.png">
+              </a> -->
+           
         <ul class="nav navbar-nav">
             <li><a class="bag-layout" href="#"><img src="<?= URL::base() ?>/images/bag1.svg" /></a></li>
             <?php if(Yii::$app->user->isGuest){ ?>
@@ -60,23 +65,21 @@ AppAsset::register($this);
             <li><a href="<?= Url::to(['site/logout']) ?>">Cerrar Sesión</a></li>
             <?php } ?>
             <li class="search-container">
-
                 <input class="search-layout" type="text" placeholder="search" />
                 <img class="img-search" src="<?= URL::base() ?>/images/lupa_.svg" />
             </li>
         <ul>
           </div>
         </nav>
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-default" role="navigation">
                <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
+      <button id="button-menu2" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-menu2" aria-expanded="false">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
     </div>
-          <div class="container-fluid collapse navbar-collapse">
+          <div id="top-menu2" class="container-fluid collapse navbar-collapse">
         <ul class="nav navbar-nav main-menu">
             <li><a href="<?= Url::to(['category/view','id'=>3]) ?>">Nueva Colección</a></li>
             <li><a href="<?= Url::to(['category/view','id'=>1]) ?>">Arte</a></li>

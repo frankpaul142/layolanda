@@ -51,6 +51,11 @@ body {
 img{
 width: 100%;
 }
+button{
+    background: white !important;
+    color: black !important;
+    border: 1px solid black !important;
+}
 .navbar-default {
      background-color: white; 
      border-color: white;
@@ -160,7 +165,7 @@ a.desc:after {
     width: auto;
     left:-38%;
 }
-.navbar ul li:hover{
+.navbar ul li a:hover{
     text-decoration:underline;
 }
 a{
@@ -320,6 +325,36 @@ h3{
     left:-19%;
     }
 }
+        @media screen and (max-width: 767px) {  
+.main-menu{
+    text-align: center;
+    position: initial;
+    width: 100%;
+    }
+#top-menu{
+    float:left;
+}
+#button-menu2{
+    position: relative;
+    float: right;
+    top: -200px;
+    left: 0px;
+}
+#nav-menu2{
+    margin-bottom: -30px;
+}
+.button-menu3{
+        float: left;
+    margin-left: 3%;
+}
+.container-category-product{
+    margin-top: -50px;
+}
+.vertical-menu ul{
+width: 100%;
+text-align: center;
+}
+}
 .flash_message_success, .flash_message_warning{
     width:100%;
     position:fixed;
@@ -336,4 +371,26 @@ h3{
     float:right;
     margin:0 5px 0 0;
     padding:0;
+    }
+.combo-select{
+    color:black;
+    background-color: white;
+    border: 1px black solid;
+    margin-bottom: 10px;
+    border-radius: 0px;
+    }
+    .combo-select span{
+            font-family: 'Conv_LetterGothicStd' !important; 
+    }
+    .notes{
+        padding-left: 6%;
+    width: 100%;
+    margin-top: 2%;
+    font-size: 3.3mm;
+    }
+    .internal-sub-menu ul{
+        font-family: 'Conv_LetterGothicStd' !important; 
+    }
+        .internal-sub-menu ul li:hover{
+        text-decoration: none !important;
     }
