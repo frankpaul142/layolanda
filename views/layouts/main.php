@@ -57,7 +57,7 @@ AppAsset::register($this);
               </a> -->
            
         <ul class="nav navbar-nav">
-            <li><a class="bag-layout" href="#"><img src="<?= URL::base() ?>/images/bag1.svg" /></a></li>
+            <li><a class="bag-layout" href="<?= Url::to(['site/viewcart']) ?>"><img src="<?= URL::base() ?>/images/bag1.svg" /></a></li>
             <?php if(Yii::$app->user->isGuest){ ?>
             <li><a href="<?= Url::to(['site/login']) ?>">Iniciar Sesión</a></li>
             <?php }else{ ?>

@@ -41,17 +41,10 @@ $impuesto1=0;
 $this->registerJs($script,View::POS_END);
 AppAsset::register($this);
 ?>
-<?php if(Yii::$app->getSession()->getFlash('warning')){ ?>
-<div class="flash_message_success">
- <?= Yii::$app->getSession()->getFlash('warning'); ?>
- <div class="btn-cerrarw"><img src="<?= URL::base() ?>/images/btn-cerrarw.svg"/></div>
-</div>
-    <?php } ?>
- <section id="home-chaide" class="background-registro">
+ <section  class="row">
 	<div class="cont-titulos">
     	<h1>CARRITO DE COMPRAS</h1>
         <p>Revisa tu carrito de compras</p>
-        <div class="separador-p"><img src="<?= URL::base() ?>/images/separador.svg"/></div>
 	</div>
     <div class="cont-formulario">
     	     <?php $form = ActiveForm::begin(['action' => 'vpossend','options' => ['method' => 'post']]); ?>

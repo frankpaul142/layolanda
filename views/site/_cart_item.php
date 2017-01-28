@@ -16,8 +16,6 @@ use yii\helpers\Url;
             <div class="cont-cant">-</div>
             <?php } ?>
             <div class="cont-valor">
-              <span class="precio-normal">PRECIO NORMAL:</span>
-              <span class="valores-p">$<?= $position->price ?></span>
               <span class="valores-p c-blue">$<?= $position->getPrice() ?></span>
             </div>
                 <div class="cont-valor">$<?= $position->getPrice()*$position->quantity ?></div>

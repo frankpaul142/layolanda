@@ -263,7 +263,7 @@ font-weight: bold;
     width: 27px;
 }
 .search-layout{
-    border: none;
+    border: none !important;
     /* margin-top: 4%; */
     outline: none;
     float: right;
@@ -411,27 +411,24 @@ text-align: center;
 
 }
 .cont-campos{
-    background-color:#FFFFFF;
     position:relative;
     }       
 .cont-campos label{
     width:25%;
     float:left;
-    color:rgba(255,255,255,1.00);
+    color:black;
     margin:0 4% 0 0;
     text-align:right;
     }
 .cont-campos input[type="text"], .cont-campos select, .cont-campos input[type="email"], .cont-campos input[type="password"]{
     width:64% !important;
     float:left;
-    background-color:rgba(255,255,255,1.00);
     padding:4px 0 !important;
-    color:#58595b;
+    color:black;
     }   
 .cont-formulario input[type="submit"]{
     width:25%;
-    background-color:#4a4a49;
-    color:rgba(255,255,255,1.00);
+    color:black;
     float:right;
     padding:8px 0;
     text-align:center;
@@ -450,7 +447,7 @@ text-align: center;
     margin:10px 0;  
     }
 /* CARRITO DE COMPRA */
-cont-imgthumb{
+.cont-imgthumb{
     width:15%;
     padding:5px 0.5% 5px 0.5%;
     display:table-cell;
@@ -467,7 +464,7 @@ cont-imgthumb{
     }
         
 .cont-cant{
-    width:16%;
+    width:40%;
     padding:5px 0.5%;
     text-align:center;
     color:#58595b;
@@ -488,15 +485,13 @@ cont-imgthumb{
     position:relative;
     }                                                                           
 .tit-carri{
-    background-color:#005f92 !important;
-    color:#FFFFFF !important;
+    color:black !important;
     }   
 .tit-carrit{
     background-color:transparent !important;
     }
 .c-gris{
-    background-color:#4a4a49 !important;
-    color:rgba(255,255,255,1.00) !important;    
+    color:black !important;    
     }
 .erase-product{
     width: 20px;
