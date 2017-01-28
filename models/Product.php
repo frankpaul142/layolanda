@@ -127,7 +127,7 @@ class Product extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getProductHasMesureTypes()
+    public function getMesuretypes()
     {
         return $this->hasMany(ProductHasMesureType::className(), ['product_id' => 'id']);
     }

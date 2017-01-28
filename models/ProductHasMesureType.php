@@ -3,7 +3,8 @@
 namespace app\models;
 
 use Yii;
-
+use yz\shoppingcart\CartPositionInterface;
+use yz\shoppingcart\CartPositionTrait;
 /**
  * This is the model class for table "product_has_mesure_type".
  *
@@ -19,11 +20,22 @@ use Yii;
  * @property Product $product
  * @property Type $type
  */
-class ProductHasMesureType extends \yii\db\ActiveRecord
+class ProductHasMesureType extends \yii\db\ActiveRecord implements CartPositionInterface
 {
     /**
      * @inheritdoc
      */
+    use CartPositionTrait;
+           public function getPrice()
+    {
+
+          return $this->price;
+        
+    }
+        public function getId()
+    {
+        return $this->id;
+    }
     public static function tableName()
     {
         return 'product_has_mesure_type';

@@ -42,6 +42,12 @@ percentPosition: true,
 
         });
     });
+$("#mesure").change(function(){
+        $(".price-product").hide();
+        var id=$(this).val();
+        $("#mtype-"+id).show();
+
+      });
 // $( document ).ready(function() {
 // $('.grid').masonry({
 //   // options
@@ -148,6 +154,9 @@ AppAsset::register($this);
               rígido.
             </li>
     </ul>
+    <?php foreach($model->mesuretypes as $mtypes): ?>
+    <span id="mtype-<?= $mtypes->id ?>" class="price-product">$<?= $mtypes->price ?><a href="<?= Url::to(['site/addtocart','id'=>$mtypes->id]) ?>"><img src="<?= URL::base() ?>/images/bag1.svg" /></a></p>
+    <?php endforeach; ?>
     </div>
     <div class="row more-products">
         <h3>Otras Obras _</h3>

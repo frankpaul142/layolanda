@@ -11,6 +11,7 @@ use app\models\ForgotForm;
 use app\models\ContactForm;
 use app\models\User;
 use app\models\Product;
+use app\models\ProductHasMesureType;
 class SiteController extends Controller
 {
     public function behaviors()
@@ -64,14 +65,9 @@ class SiteController extends Controller
             ]);
         }
     }
-    public function actionAddtocart($id,$fragrance=0){
+    public function actionAddtocart($id){
             $cart = Yii::$app->cart;
-
-            if($fragrance==0){
-            $model = SapCode::find()->where(['id'=>$id])->one();
-                }else{
-                    $model = SapCode::find()->where(['id'=>$id,'fragrance_id' => $fragrance])->one();
-                }
+            $model = ProductHasMesureType::find()->where(['id'=>$id])->one();
             if ($model) {
                 $cart->put($model, 1);
                 //die(print_r($cart));
@@ -82,7 +78,7 @@ class SiteController extends Controller
     }
     public function actionRemovefromcart($id){
             $cart = Yii::$app->cart;
-            $model = SapCode::find()->where(['id'=>$id])->one();
+            $model = ProductHasMesureType::find()->where(['id'=>$id])->one();
             if ($model){
                 $cart->remove($model);
                 //die(print_r($cart));
@@ -94,7 +90,7 @@ class SiteController extends Controller
     public function actionUpdatefromcart($id,$quantity){
                 $cart = Yii::$app->cart;
 
-            $model = SapCode::find()->where(['id'=>$id])->one();
+            $model = ProductHasMesureType::find()->where(['id'=>$id])->one();
             if ($model) {
                 $cart->update($model,$quantity);
                 //die(print_r($cart));
@@ -105,27 +101,7 @@ class SiteController extends Controller
     }
 
     public function actionViewcart(){
-        $number=Yii::$app->cart->getCost(true);
-        if($number<200){
-            $cart = Yii::$app->cart;
-            $model = SapCode::find()->where(['id'=>70000076])->one();
 
-            if ($model && !isset($cart->positions[70000076])) {
-                $cart->put($model, 1);
-                //die(print_r($cart));
-              
-            }
-        }else{
-            $cart = Yii::$app->cart;
-
-            $model = SapCode::find()->where(['id'=>70000076])->one();
-
-            if ($model && isset($cart->positions[70000076])) {
-                $cart->remove($model);
-                //die(print_r($cart));
-              
-            }
-        }
         return $this->render('cart');   
     }
 
