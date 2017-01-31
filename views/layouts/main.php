@@ -14,6 +14,11 @@ $script=<<< JS
        $(".flash_message_warning").fadeOut();
        $(".flash_message_success").fadeOut();
        });
+$(document).ready(function () {
+        $(".navbar-toggle").on("click", function () {
+            $(this).toggleClass("active");
+        });
+    });
 JS;
 $this->registerJs($script,View::POS_END);
 AppAsset::register($this);
@@ -68,15 +73,15 @@ AppAsset::register($this);
                 <input class="search-layout" type="text" placeholder="search" />
                 <img class="img-search" src="<?= URL::base() ?>/images/lupa_.svg" />
             </li>
-        <ul>
+        </ul>
           </div>
         </nav>
         <nav class="navbar navbar-default" role="navigation">
                <div class="navbar-header">
       <button id="button-menu2" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-menu2" aria-expanded="false">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
       </button>
     </div>
           <div id="top-menu2" class="container-fluid collapse navbar-collapse">
@@ -85,7 +90,7 @@ AppAsset::register($this);
             <li><a href="<?= Url::to(['category/view','id'=>1]) ?>">Arte</a></li>
             <li><a href="<?= Url::to(['category/view','id'=>2]) ?>">Artesanía Fina</a></li>
             <li><a href="<?= Url::to(['artist/index']) ?>">Artista</a></li>
-        <ul>
+        </ul>
           </div>
         </nav>
         <div class="container">
