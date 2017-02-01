@@ -215,7 +215,14 @@ public static function findIdentity($id)
     {
         return $this->hasMany(Address::className(), ['user_id' => 'id']);
     }
-
+    public function getDeliveryAddresses()
+    {
+        return $this->hasMany(Address::className(), ['user_id' => 'id'])->where(['type' => 'DELIVERY']);
+    }
+        public function getBillingAddresses()
+    {
+        return $this->hasMany(Address::className(), ['user_id' => 'id'])->where(['type' => 'BILLING']);
+    }
     /**
      * @return \yii\db\ActiveQuery
      */

@@ -117,7 +117,7 @@ AppAsset::register($this);
         <h3>Detalles _</h3>
         <span>Autor</span>
         <p><?= $model->artist->name ?></p>
-        <p><?= $model->artist->country->description ?></p>
+        <p><?= $model->artist->country->country_name ?></p>
         <p><?= date('Y',strtotime($model->artist->birthday)) ?><?php if($model->artist->death_date) echo "-".date('Y',strtotime($model->artist->death_date)); ?> </p>
         <span>Técnica</span>
         <p><?= $model->technique->description ?></p>

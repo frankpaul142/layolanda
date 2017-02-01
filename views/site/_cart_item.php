@@ -11,7 +11,7 @@ use yii\helpers\Url;
             	<?= $position->product->title ?>-<?= $position->mesure->description ?>-<?= $position->type->description ?>
             </div>
             <?php if($position->id!=70000076){ ?>
-            <div class="cont-cant"><input type="number"class="change_q" posid="<?= $position->id ?>" value="<?= $position->quantity ?>" /></div>
+            <div class="cont-cant"><input type="text" class="change_q" readonly="readonly" posid="<?= $position->id ?>" value="<?= $position->quantity ?>" /></div>
             <?php }else{ ?>
             <div class="cont-cant">-</div>
             <?php } ?>

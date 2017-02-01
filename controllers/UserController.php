@@ -8,7 +8,8 @@ use app\models\UserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use app\models\Address;
+use app\models\AddressSearch;
 /**
  * UserController implements the CRUD actions for User model.
  */
@@ -61,9 +62,9 @@ class UserController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
+    public function actionUpdate()
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel(Yii::$app->user->identity->id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -74,6 +75,47 @@ class UserController extends Controller
         }
     }
 
+    public function actinoUpdatepassword(){
+
+    }
+    public function actionAddress()
+    {
+     $searchModel = new AddressSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->query->where(['user_id'=>Yii::$app->user->identity->id]);
+        return $this->render('address', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+     public function actionCreateaddress()
+    {
+        $model = new Address();
+        $model->creation_date=date('Y-m-d H:i:s');
+        $model->user_id=Yii::$app->user->identity->id;
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['address', 'id' => $model->id]);
+        } else {
+            return $this->render('createaddress', [
+                'model' => $model,
+            ]);
+        }
+    }
+      public function actionUpdateaddress($id)
+    {
+        $model = Address::find()->where(['id'=>$id,'user_id'=>Yii::$app->user->identity->id])->one();
+        if(!$model){
+            Yii::$app->getSession()->setFlash('warning','Dirección no encontrada.');
+           return $this->redirect(['address']); 
+        } 
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['address']);
+        } else {
+            return $this->render('updateaddress', [
+                'model' => $model,
+            ]);
+        }
+    }
     /**
      * Deletes an existing User model.
      * If deletion is successful, the browser will be redirected to the 'index' page.

@@ -64,4 +64,12 @@ class Bill extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Detail::className(), ['bill_id' => 'id']);
     }
+        public function getDeliveryAddress()
+    {
+        return $this->hasOne(Address::className(), ['id' => 'delivery_id']);
+    }
+        public function getBillingAddress()
+    {
+        return $this->hasOne(Address::className(), ['id' => 'billing_id']);
+    }
 }

@@ -8,9 +8,6 @@ $script='$(document).ready(function() {
         $("#interdin").on("click", function(e){
     $("form").attr("action", "vpossend").submit();
     });
-        $("#pacificard").on("click", function(e){
-    $("form").attr("action", "vpossend2").submit();
-    });
     $("#billing_id").change(function(){
         var id= $(this).val();
         var aux= "infob-";
@@ -23,15 +20,15 @@ $script='$(document).ready(function() {
         $("[class^="+aux+"]").hide();
         $(".infod-"+id).show();
     });
-    $(".change_q").change(function(){
-        var aux2= $(this).val();
-        var aux= $(this).attr("posid");
-        $.get( "updatefromcart", { id: aux, quantity: aux2 } )
-          .done(function( data ) {
-            alert( "Data Loaded: " + data );
-          });
+    // $(".change_q").change(function(){
+    //     var aux2= $(this).val();
+    //     var aux= $(this).attr("posid");
+    //     $.get( "updatefromcart", { id: aux, quantity: aux2 } )
+    //       .done(function( data ) {
+    //         alert( "Data Loaded: " + data );
+    //       });
         
-    });
+    // });
 });
 ';
 $display="block";
@@ -78,22 +75,14 @@ AppAsset::register($this);
         <a class="link-comprar" href="<?= Url::to(['site/index']) ?>">Seguir Comprando</a>
       <input type="hidden" name="Subtotal" value="<?= Yii::$app->cart->getCost(true) ?>" />
 
-      <input type="hidden" name="impuesto1" value="<?= $impuesto ?>" />
-      <input type="hidden" name="impuesto2" value="0" />
-      <input type="hidden" name="propina" value="0" />
-       <input type="hidden" name="txtReferencia1" value="0" />
-       <input type="hidden" name="txtReferencia2" value="0" />
-       <input type="hidden" name="txtReferencia3" value="0" />
-       <input type="hidden" name="txtReferencia4" value="0" />
-       <input type="hidden" name="txtReferencia5" value="0" />  
        	<?php if(!Yii::$app->user->isGuest): ?>
         <div id="cont-direccion">
         	<div class="direc-50">
-            	<h1>Escojer datos de facturación:</h1>
+            	<h3>Escojer datos de facturación:</h3>
                 <select id="billing_id" name="billing">
                 	<option value="" disabled>Escoge una opción</option>
                     <?php foreach(Yii::$app->user->identity->billingAddresses as $k => $billing):  ?>
-                    <option value="<?= $billing->id ?>"><?= $billing->sector ?></option>
+                    <option value="<?= $billing->id ?>"><?= $billing->zip ?></option>
                     <?php endforeach; ?>
                 </select>
                 <div class="info-faturacion">
@@ -101,10 +90,10 @@ AppAsset::register($this);
                   <?php if($k!=0){ $display="none"; }  ?>
                   
                     <div class="infob-<?= $billing->id ?>" style="display:<?= $display; ?>">
-                        <strong>Dirección:</strong><div id="billing_address"><?= $billing->street1." ".$billing->street2 ?>.</div>
-                        <strong>No. Calle:</strong><div id="billing_number"><?= $billing->number ?></div>
-                        <strong>Ciudad:</strong><div id="billing_city"><?= $billing->city->canton ?></div>
-                        <strong>Sector:</strong><div id="billing_sector"><?= $billing->sector ?></div>
+                        <strong>Dirección:</strong><div id="billing_address"><?= $billing->address_line_1." ".$billing->address_line_2 ?>.</div>
+                        <strong>Código Postal:</strong><div id="billing_number"><?= $billing->zip ?></div>
+                        <strong>Ciudad:</strong><div id="billing_city"><?= $billing->city ?></div>
+                        <strong>País:</strong><div id="billing_sector"><?= $billing->country->country_name ?></div>
                     </div>
                     
                 <?php endforeach; ?>
@@ -112,18 +101,18 @@ AppAsset::register($this);
                 </div>
             </div>
             <div class="direc-50">
-            	<h1>Escojer la dirección de envio:</h1>
+            	<h3>Escojer la dirección de envio:</h3>
                 <select id="delivery_id" name="delivery">
                     <option value="" disabled>Escoge una opción</option>
                     <?php foreach(Yii::$app->user->identity->deliveryAddresses as $k => $delivery):
                         if($k==0){
-                            $address= $delivery->street1." ".$delivery->street2;
-                            $number= $delivery->number;
-                            $city = $delivery->city->canton;
-                            $sector= $delivery->sector;
+                            $address= $delivery->address_line_1." ".$delivery->address_line_2;
+                            $number= $delivery->zip;
+                            $city = $delivery->city;
+                            $sector= $delivery->country->country_name;
                         }   
                      ?>
-                    <option value="<?= $delivery->id ?>"><?= $delivery->sector ?></option>
+                    <option value="<?= $delivery->id ?>"><?= $delivery->zip ?></option>
                     <?php endforeach; ?>
                 </select>
                 <div class="info-faturacion">
@@ -131,26 +120,25 @@ AppAsset::register($this);
                   <?php if($k!=0){ $display2="none"; }  ?>
                   
                     <div class="infod-<?= $delivery->id ?>" style="display:<?= $display2; ?>">
-                        <strong>Dirección:</strong><div id="billing_address"><?= $delivery->street1." ".$delivery->street2 ?>.</div>
-                        <strong>No. Calle:</strong><div id="billing_number"><?= $delivery->number ?></div>
-                        <strong>Ciudad:</strong><div id="billing_city"><?= $delivery->city->canton ?></div>
-                        <strong>Sector:</strong><div id="billing_sector"><?= $delivery->sector ?></div>
+                        <strong>Dirección:</strong><div id="billing_address"><?= $delivery->address_line_1." ".$delivery->address_line_2 ?>.</div>
+                        <strong>Código Postal:</strong><div id="billing_number"><?= $delivery->zip ?></div>
+                        <strong>Ciudad:</strong><div id="billing_city"><?= $delivery->city ?></div>
+                        <strong>País:</strong><div id="billing_sector"><?= $delivery->country->country_name ?></div>
                     </div>
                     
                 <?php endforeach; ?>
                     <span>Si no posees direccion de Envío. <a href="<?= Url::to(['user/address']) ?>">Ingresa aquí</a></span>
                 </div>
             </div>
-                    <h1>Observaciones:</h1>
+                    <h3>Observaciones:</h3>
         <textarea name="observation" rows="4" cols="50" style="width:100%" placeholder="Cualquier explicación o requrimiento extra que necesite puede ser escrita aquí."></textarea>
         </div>
     <?php endif; ?>
 		<div class="cont-fpago">
         <h1>Pagar Con:</h1>
        
-        	<a id="interdin" href="#" class="btn-pago"><img  src="<?= URL::base() ?>/images/pay-club.png" /></a>
+        	<a id="paypal" href="#" class="btn-pago"><img class="paylogo" src="<?= URL::base() ?>/images/paypal.jpg" /></a>
             
-            <a id="pacificard" href="#" class="btn-pago"><img  src="<?= URL::base() ?>/images/tarjetas-06.png" /></a>
         
                
         </div>
