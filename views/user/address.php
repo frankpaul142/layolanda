@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\AddressSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Addresses';
+$this->title = 'Direcciones';
 ?>
 <div class="address-index">
 

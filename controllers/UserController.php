@@ -10,6 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Address;
 use app\models\AddressSearch;
+use yii\filters\AccessControl;
 /**
  * UserController implements the CRUD actions for User model.
  */
@@ -21,6 +22,18 @@ class UserController extends Controller
     public function behaviors()
     {
         return [
+                                        'access' => [
+           'class' => AccessControl::className(),
+           'only' => ['index', 'update', 'address', 'createaddress','updateaddress'],
+           'rules' => [
+
+               [
+                   'actions' => ['index','update','address','createaddress','updateaddress'],
+                   'allow' => true,
+                   'roles' => ['@'],
+               ],
+           ],
+       ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

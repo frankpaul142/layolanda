@@ -4,9 +4,10 @@ use yii\widgets\ActiveForm;
 use app\assets\AppAsset;
 use yii\web\View;
 $this->title = 'Carrito de compras';
+$paypalurl=Url::to(['shop/paypal']);
 $script='$(document).ready(function() {
-        $("#interdin").on("click", function(e){
-    $("form").attr("action", "vpossend").submit();
+        $("#paypal").on("click", function(e){
+    $("form").attr("action","../shop/paypal").submit();
     });
     $("#billing_id").change(function(){
         var id= $(this).val();
@@ -44,7 +45,7 @@ AppAsset::register($this);
         <p>Revisa tu carrito de compras</p>
 	</div>
     <div class="cont-formulario">
-    	     <?php $form = ActiveForm::begin(['action' => 'vpossend','options' => ['method' => 'post']]); ?>
+    	     <?php $form = ActiveForm::begin(['action' => ['shop/paypal'],'options' => ['method' => 'post']]); ?>
    		<div class="cont-campos-header">
         	<div class="cont-imgthumb tit-carrit">&nbsp;</div>
         	<div class="cont-txt tit-carrit">&nbsp;</div>
@@ -59,8 +60,9 @@ AppAsset::register($this);
    
         }
  ?>      
-    <?php 
-      $number=Yii::$app->cart->getCost(true)*0.14;
+    <?php
+      $iva=0; 
+      $number=Yii::$app->cart->getCost(true)*$iva;
       $impuesto=number_format((float)$number, 2, '.', '');
       ?>
   		
@@ -73,13 +75,13 @@ AppAsset::register($this);
             
 		</div>
         <a class="link-comprar" href="<?= Url::to(['site/index']) ?>">Seguir Comprando</a>
-      <input type="hidden" name="Subtotal" value="<?= Yii::$app->cart->getCost(true) ?>" />
+      <input type="hidden" name="subtotal" value="<?= Yii::$app->cart->getCost(true) ?>" />
 
        	<?php if(!Yii::$app->user->isGuest): ?>
         <div id="cont-direccion">
         	<div class="direc-50">
             	<h3>Escojer datos de facturación:</h3>
-                <select id="billing_id" name="billing">
+                <select id="billing_id" name="billing" class="selectpicker" data-style="combo-select" >
                 	<option value="" disabled>Escoge una opción</option>
                     <?php foreach(Yii::$app->user->identity->billingAddresses as $k => $billing):  ?>
                     <option value="<?= $billing->id ?>"><?= $billing->zip ?></option>
@@ -102,7 +104,7 @@ AppAsset::register($this);
             </div>
             <div class="direc-50">
             	<h3>Escojer la dirección de envio:</h3>
-                <select id="delivery_id" name="delivery">
+                <select id="delivery_id" name="delivery" class="selectpicker" data-style="combo-select" >
                     <option value="" disabled>Escoge una opción</option>
                     <?php foreach(Yii::$app->user->identity->deliveryAddresses as $k => $delivery):
                         if($k==0){
@@ -138,8 +140,6 @@ AppAsset::register($this);
         <h1>Pagar Con:</h1>
        
         	<a id="paypal" href="#" class="btn-pago"><img class="paylogo" src="<?= URL::base() ?>/images/paypal.jpg" /></a>
-            
-        
                
         </div>
         	<!-- <input type="submit" value="PAGAR AHORA"/> -->
