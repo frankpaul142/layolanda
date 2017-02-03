@@ -53,7 +53,7 @@ AppAsset::register($this);
                 <li><a href="#">¿Cómo Llegar?</a></li>
                 <li><a href="#">Póliticas de Privacidad</a></li>
                 <li><a href="#">Términos y Condiciones de compra</a></li>
-            </ul>
+          </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>

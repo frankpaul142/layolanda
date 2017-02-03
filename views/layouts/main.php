@@ -6,6 +6,8 @@ use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use yii\web\View;
 use yii\helpers\Url;
+use kartik\widgets\Typeahead;
+use yii\web\JsExpression;
 /* @var $this \yii\web\View */
 /* @var $content string */
 
@@ -70,7 +72,26 @@ AppAsset::register($this);
             <li><a href="<?= Url::to(['site/logout']) ?>">Cerrar Sesión</a></li>
             <?php } ?>
             <li class="search-container">
-                <input class="search-layout" type="text" placeholder="search" />
+                <!-- <input class="search-layout" type="text" placeholder="search" /> -->
+                                <?= Typeahead::widget([
+                  'name' => 'search',
+                  'options' => ['placeholder' => 'search'],
+                  'scrollable' => true,
+                  'pluginOptions' => ['highlight'=>true],
+                  'dataset' => [
+                      [
+                          'datumTokenizer' => "Bloodhound.tokenizers.obj.whitespace('value')",
+                          'display' => 'value',
+                           'templates' => [
+                            'suggestion' => new JsExpression("Handlebars.compile('<a href=\'".URL::base()."/product/view?id={{id}}\' >{{value}}</a>')")
+                          ],
+                          'remote' => [
+                            'url' => Url::to(['site/search2']) . '?q=%QUERY',
+                            'wildcard' => '%QUERY'
+                          ]
+                      ]
+                   ]
+                ]); ?>
                 <img class="img-search" src="<?= URL::base() ?>/images/lupa_.svg" />
             </li>
         </ul>

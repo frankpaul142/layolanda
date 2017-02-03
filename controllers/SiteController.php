@@ -12,6 +12,9 @@ use app\models\ContactForm;
 use app\models\User;
 use app\models\Product;
 use app\models\ProductHasMesureType;
+use yii\helpers\Json;
+use yii\helpers\Url;
+use yii\helpers\Html;
 class SiteController extends Controller
 {
     public function behaviors()
@@ -50,6 +53,23 @@ class SiteController extends Controller
         return $this->render('index',['products'=>$products]);
     }
 
+    public function actionSearch(){
+        $products=Product::find()->all();
+        $out=array();
+        foreach ($products as $product) {
+        $out[] = ['value' => $product->description];
+    }
+        echo Json::encode($out);
+    }
+    public function actionSearch2($q = null) {
+        $products=Product::find()->where(['LIKE','description',$q])->orderBy('description')->all();
+        $out=array();
+        foreach ($products as $product) {
+         // $out[] = Html::a($product->description, ['product/view', 'id' => $product->id], []);
+         $out[] = ['value' => $product->description,'id'=>$product->id];
+    }
+        return Json::encode($out);
+}
     public function actionLogin()
     {
         if (!\Yii::$app->user->isGuest) {

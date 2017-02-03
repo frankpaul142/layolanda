@@ -296,15 +296,31 @@ font-weight: bold;
 .bag-layout img{
     width: 27px;
 }
-.search-layout{
+
+.tt-scrollable-menu{
     border: none !important;
     /* margin-top: 4%; */
-    outline: none;
-    float: right;
-    height: 14px;
-    position: relative;
-    top: 16px;
-    z-index: 2;
+    outline: none !important;
+    float: right !important;
+    height: 14px !important;
+    position: relative !important;
+    top: 16px !important;
+    z-index: 2 !important;    
+}
+.tt-scrollable-menu input[type="text"]{
+    border: none !important;
+    /* margin-top: 4%; */
+    outline: none !important;
+    float: right !important;
+    height: 23px !important;
+    width: 75% !important;
+    position: relative !important;
+    top: -29px !important;
+    z-index: 2 !important;
+    font-size: 3.5mm;
+    left: -12px;
+    -webkit-box-shadow:none;
+    box-shadow: none;
 }
 .img-search{
         position: relative;

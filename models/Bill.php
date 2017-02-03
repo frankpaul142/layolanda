@@ -33,7 +33,7 @@ class Bill extends \yii\db\ActiveRecord
             [['user_id', 'creation_date','billing_id','delivery_id','subtotal'], 'required'],
             [['user_id','billing_id','delivery_id'], 'integer'],
             [['creation_date'], 'safe'],
-            [['observation','pay_method'], 'string'],
+            [['observation','pay_method','status'], 'string'],
             [['subtotal'], 'double'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];

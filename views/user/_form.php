@@ -31,7 +31,7 @@ use yii\widgets\ActiveForm;
         ]
         ]) ?>
 
-    <?= $form->field($model, 'sex')->dropDownList([ 'MALE' => 'MALE', 'FEMALE' => 'FEMALE', ], ['prompt' => '']) ?>
+    <?= $form->field($model, 'sex')->dropDownList([ 'MALE' => 'MALE', 'FEMALE' => 'FEMALE', ], ['prompt' => '','class'=>'selectpicker','data-style'=>'combo-select']) ?>
 
 
     <div class="form-group">

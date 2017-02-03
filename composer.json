@@ -27,7 +27,8 @@
         "omnilight/yii2-shopping-cart": "*",
         "kartik-v/yii2-password": "@dev",
         "machour/yii2-notifications": "@dev",
-        "paypal/rest-api-sdk-php": "*"
+        "paypal/rest-api-sdk-php": "*",
+        "keygenqt/yii2-autocomplete-ajax": "@dev"
     },
     "require-dev": {
         "codeception/codeception": "*",
