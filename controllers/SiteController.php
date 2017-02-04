@@ -53,20 +53,12 @@ class SiteController extends Controller
         return $this->render('index',['products'=>$products]);
     }
 
-    public function actionSearch(){
-        $products=Product::find()->all();
-        $out=array();
-        foreach ($products as $product) {
-        $out[] = ['value' => $product->description];
-    }
-        echo Json::encode($out);
-    }
     public function actionSearch2($q = null) {
-        $products=Product::find()->where(['LIKE','description',$q])->orderBy('description')->all();
+        $products=Product::find()->where(['LIKE','title',$q])->orderBy('title')->all();
         $out=array();
         foreach ($products as $product) {
          // $out[] = Html::a($product->description, ['product/view', 'id' => $product->id], []);
-         $out[] = ['value' => $product->description,'id'=>$product->id];
+         $out[] = ['value' => $product->title,'id'=>$product->id];
     }
         return Json::encode($out);
 }

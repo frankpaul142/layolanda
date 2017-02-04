@@ -68,7 +68,7 @@ AppAsset::register($this);
             <img src="<?= URL::base() ?>/images/products/<?= $picture->description ?>" />
         <?php break; endforeach; ?>
             <span><?= $product->title ?> <?= $product->description ?></span>
-            <p>$1231</p>
+            <p>$<?= $product->minorprice['price'] ?></p>
         </a>
   </div>
   <?php endforeach; ?> 
