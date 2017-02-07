@@ -8,7 +8,8 @@ use app\models\CategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use sjaakp\alphapager\ActiveDataProvider;
+use app\models\Product;
 /**
  * CategoryController implements the CRUD actions for Category model.
  */
@@ -44,6 +45,16 @@ class CategoryController extends Controller
         ]);
     }
 
+    public function actionArtist()    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Product::find()->joinWith('artist')->orderBy('name'),
+            'alphaAttribute' => 'name'
+        ]);
+
+        return $this->render('artist', [
+            'dataProvider' => $dataProvider
+        ]);
+    }
     /**
      * Displays a single Category model.
      * @param integer $id
@@ -54,6 +65,14 @@ class CategoryController extends Controller
         $categories=Category::find()->where(['category_id'=>$id])->all();
         return $this->render('view', [
             'model' => $this->findModel($id),'categories'=>$categories
+        ]);
+    }
+    public function actionSubcategory($id)
+    {
+        $model=$this->findModel($id);
+        $categories=Category::find()->where(['category_id'=>$model->category->category_id])->all();
+        return $this->render('subcategory', [
+            'model' => $model,'categories'=>$categories
         ]);
     }
 

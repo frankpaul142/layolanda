@@ -20,7 +20,7 @@ AppAsset::register($this);
 ?>
 <div class="row container-category-product">
   <div class="col-sm-3 sidebar">
-    <h2><?= $model->description ?></h2>
+    <h2><?= $model->category->category->description ?></h2>
     <div class="sidebar-nav">
       <div class="navbar navbar-default" role="navigation">
         <div class="navbar-header">
@@ -38,7 +38,7 @@ AppAsset::register($this);
                 <div id="sub-menu-<?= $category->id ?>" class="collapse internal-sub-menu">
                 <ul class="nav navbar-nav sub-category">
                     <?php foreach($category->categories as $k => $subcategory): ?>
-                    <?php $selected = ($k == 0) ? 'selected' : ''; ?>
+                    <?php $selected = ($subcategory->id == $model->id) ? 'selected' : ''; ?>
                     <li class="<?= $selected ?>" parent_cat="<?= $category->id ?>" ><a class="subcategory" id="<?= $subcategory->id ?>" href="<?= Url::to(['category/subcategory','id'=>$subcategory->id]) ?>"><?= $subcategory->description ?></a>
                     <?php endforeach; ?>
                 </ul>
@@ -59,9 +59,7 @@ AppAsset::register($this);
     </div>
   </div>
   <div class="col-sm-9">
-    <?php foreach($model->categories as $k => $category): ?>
-    <?php if($k==1) break; ?>
-    <?php foreach($category->categories[0]->products as $product): ?>
+    <?php foreach($model->products as $product): ?>
    <div class="col-sm-4 gallery">
         <a href="<?= Url::to(['product/view','id'=>$product->id]) ?>">
             <?php foreach($product->pictures as $picture): ?>
@@ -71,7 +69,6 @@ AppAsset::register($this);
             <p>$<?= $product->minorprice['price'] ?></p>
         </a>
   </div>
-  <?php endforeach; ?> 
   <?php endforeach; ?>           
   </div>
 </div>

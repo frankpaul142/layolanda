@@ -62,12 +62,12 @@ $this->registerJs($script,View::POS_END);
 AppAsset::register($this);
 ?>
 <div class="row container-category-product">
-  <div class="col-sm-2 sidebar">
-        <h2><?= $model->category->category->category->description ?></h2>
+  <div class="col-sm-3 sidebar">
+    <h2><?= $model->category->category->category->description ?></h2>
     <div class="sidebar-nav">
       <div class="navbar navbar-default" role="navigation">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle button-menu3" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+          <button  type="button" class="navbar-toggle button-menu3" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
         <span class="icon-bar top-bar"></span>
         <span class="icon-bar middle-bar"></span>
         <span class="icon-bar bottom-bar"></span>
@@ -79,29 +79,29 @@ AppAsset::register($this);
             <li ><a class="category-<?= $category->id ?>" data-toggle="collapse" data-target="#sub-menu-<?= $category->id ?>" href="#"><?= $category->description ?></a>
                 <?php if($category->categories): ?>
                 <div id="sub-menu-<?= $category->id ?>" class="collapse internal-sub-menu">
-                <ul>
+                <ul class="nav navbar-nav sub-category">
                     <?php foreach($category->categories as $k => $subcategory): ?>
                     <?php $selected = ($subcategory->id == $model->category_id) ? 'selected' : ''; ?>
-                    <li class="<?= $selected ?>" parent_cat="<?= $category->id ?>" ><a href="<?= Url::to(['category/view','id'=>$subcategory->id]) ?>"><?= $subcategory->description ?></a>
-                    <?php endforeach; ?>
+                    <li class="<?= $selected ?>" parent_cat="<?= $category->id ?>" ><a class="subcategory" id="<?= $subcategory->id ?>" href="<?= Url::to(['category/subcategory','id'=>$subcategory->id]) ?>"><?= $subcategory->description ?></a>
+                   <?php endforeach; ?>
                 </ul>
               </div>
                 <?php endif; ?>
             </li>
         <?php endforeach; ?>
           </ul>
-<!--           <ul class="nav navbar-nav politics">
+          <ul class="nav navbar-nav politics collapse">
                 <li><a href="#">Envio</a></li>
                 <li><a href="#">Contáctenos</a></li>
                 <li><a href="#">¿Cómo Llegar?</a></li>
                 <li><a href="#">Póliticas de Privacidad</a></li>
                 <li><a href="#">Términos y Condiciones de compra</a></li>
-            </ul> -->
+          </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
   </div>
-  <div class="col-sm-10">
+  <div class="col-sm-9">
     <h2><?= $model->title ?></h2>
     <div class="col-sm-8 grid">
         <?php foreach($model->pictures as $k => $picture): ?>

@@ -110,7 +110,7 @@ AppAsset::register($this);
             <li><a href="<?= Url::to(['category/view','id'=>3]) ?>">Nueva Colección</a></li>
             <li><a href="<?= Url::to(['category/view','id'=>1]) ?>">Arte</a></li>
             <li><a href="<?= Url::to(['category/view','id'=>2]) ?>">Artesanía Fina</a></li>
-            <li><a href="<?= Url::to(['artist/index']) ?>">Artista</a></li>
+            <li><a href="<?= Url::to(['category/artist']) ?>">Artista</a></li>
         </ul>
           </div>
         </nav>

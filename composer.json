@@ -28,7 +28,8 @@
         "kartik-v/yii2-password": "@dev",
         "machour/yii2-notifications": "@dev",
         "paypal/rest-api-sdk-php": "*",
-        "keygenqt/yii2-autocomplete-ajax": "@dev"
+        "keygenqt/yii2-autocomplete-ajax": "@dev",
+        "sjaakp/yii2-alphapager": "*"
     },
     "require-dev": {
         "codeception/codeception": "*",
