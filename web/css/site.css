@@ -629,8 +629,11 @@ background-color: white;
     color: black !important;
 }
 .logosticky{
-    display: none;
-    position: relative !important;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 1.2s linear;
+    position: absolute;
+    left: 5%;
 }
 .fixed { height:50%; overflow:hidden; }
 .scrollit { height:100%; overflow-y:scroll; }

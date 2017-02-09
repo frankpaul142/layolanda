@@ -35,8 +35,8 @@ $(document).ready(function(){
   if(!isMobile) {
     $(".container-right").css('float','right');
  $("#top-menu2").sticky({topSpacing:0,responsiveWidth:true,zIndex:10});
- $('#top-menu2').on('sticky-start', function() { $('#top-menu2').addClass('sticky');$('.logosticky').show(); });
- $('#top-menu2').on('sticky-end', function() { $('#top-menu2').removeClass('sticky');$('.logosticky').hide(); });
+ $('#top-menu2').on('sticky-start', function() { $('#top-menu2').addClass('sticky');$('.logosticky').css({'visibility':'visible','opacity':1}); });
+ $('#top-menu2').on('sticky-end', function() { $('#top-menu2').removeClass('sticky');$('.logosticky').css({'visibility':'hidden','opacity':0}); });
 $('.sidebar').affix({
   offset: {
     top: 235
