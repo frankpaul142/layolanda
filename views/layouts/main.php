@@ -128,7 +128,7 @@ AppAsset::register($this);
         <span class="icon-bar bottom-bar"></span>
       </button>
     </div>
-          <div id="top-menu2" class="container-fluid collapse navbar-collapse">
+          <div id="top-menu2" class="container-fluid collapse navbar-collapse collapse-center">
                            <a class="navbar-brand logosticky" href="<?= URL::base() ?>">
                 <img alt="Brand" src="<?= URL::base() ?>/images/logosticky.png">
               </a>

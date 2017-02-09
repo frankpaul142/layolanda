@@ -203,10 +203,13 @@ a.desc:after {
     margin: 0 0 15px 0;
 }
 .main-menu{
-        position: relative;
+display: inline-block !important;
+    float: none !important;
+    text-align: center !important;
     font-size: 5.0mm;
-    width: auto;
-    left:-41%;
+}
+.collapse-center{
+    text-align: center !important;
 }
 .navbar ul li a:hover{
     text-decoration:underline;
@@ -250,8 +253,7 @@ font-weight: bold;
     padding-bottom: 0px;
   }
     .sub-category li a {
-    padding-top: 0px !important;
-    padding-bottom: 0px !important;
+    margin-left: 5%;
   }
 }
 .selected{
@@ -378,40 +380,21 @@ h3{
     padding-left: 7%;
 }
 @media screen and (max-width: 1700px){
-.main-menu {
-    left: -34%;
-}
 .pagination{
     padding-left: 7%;
 }
 }
-@media screen and (max-width: 1480px){   
-.main-menu{
-    left:-34%;
-    }   
-}
 @media screen and (max-width: 1200px) {  
-.main-menu{
-    left:-24%;
-    }
     .pagination{
     padding-left: 2%;
 }
 }
         @media screen and (max-width: 1000px) {  
-.main-menu{
-    left:-21%;
-    }
     .pagination{
     padding-left: 2%;
 }
 }
         @media screen and (max-width: 767px) {  
-.main-menu{
-    text-align: center;
-    position: initial;
-    width: 100%;
-    }
 #top-menu{
     float:left;
 }
@@ -637,7 +620,7 @@ background-color: white;
  border-bottom: 1px solid black;
 }
 .sticky ul{
-    margin-top: 0px;
+    margin-top: 2px;
 
 }
 .sticky ul li a{
