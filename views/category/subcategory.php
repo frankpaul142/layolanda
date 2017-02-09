@@ -7,7 +7,7 @@ use app\assets\AppAsset;
 use yii\web\View;
 use yii\widgets\ActiveForm;
 use sjaakp\alphapager\AlphaPager;
-use yii\grid\GridView;
+use yii\data\Sort;
 /* @var $this yii\web\View */
 /* @var $model app\models\Category */
 
@@ -71,7 +71,14 @@ AppAsset::register($this);
     </div>
 
     <?php ActiveForm::end(); ?>
+    <?php
+$findUrl = 'category/subcategory?id='.$model->id;
+$sort->route = $findUrl;
 
+// display links leading to sort by name and age, respectively
+echo $sort->link('title');
+
+     ?>
     <?php foreach($dataProvider->getModels() as $product): ?>
    <div class="col-sm-4 gallery">
         <a href="<?= Url::to(['product/view','id'=>$product->id]) ?>">
