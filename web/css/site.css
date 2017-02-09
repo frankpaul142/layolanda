@@ -427,6 +427,9 @@ text-align: center;
     height: 61px;
     top:-21px;
 }
+.sub-category {
+    margin-left: 0%;
+}
 }
 .flash_message_success, .flash_message_warning{
     width:100%;
@@ -684,3 +687,72 @@ background-color: white;
    visibility: visible;
    opacity: 1;
  } 
+ .category-title{
+    margin-top:0px;
+ }
+ .filters{
+        margin-bottom: 10px;
+    padding-left: 3%;
+ }
+ .filters .row{
+    margin-bottom: 10px;
+ }
+ .arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  
+  border-top: 5px solid white;
+  margin: 8px 0px 0px 5px;
+   transition: all 300ms ease-in-out;
+}
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  
+  border-bottom: 5px solid white;
+    margin: 7px 0px 0px 5px;
+   transition: all 300ms ease-in-out;
+}
+.box{
+        float: left;
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border-radius: 1px;
+    margin-right: 1%;
+}
+.links-filters{
+    margin-left: 5%;
+    display: none;
+}
+.sorter{
+    border: 1.5px solid;
+    padding: 1% 6% 0.2% 6%;
+}
+.sorter:hover{
+color: white;
+background-color: black; 
+}
+.filter-title{
+        font-size: 4.2mm;
+}
+.asc{
+background-color: black;
+color: white;
+}
+.asc:hover{
+color: black;
+background-color: white; 
+}
+.desc{
+    background-color: black;
+color: white;
+}
+.desc:hover{
+color: black;
+background-color: white; 
+}

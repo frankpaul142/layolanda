@@ -77,7 +77,9 @@ class CategoryController extends Controller
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$model->id);
             $sort = new Sort([
         'attributes' => [
-            'title',
+            'title' =>[
+                'label' =>'Título'
+            ]
         ],
     ]);
         return $this->render('subcategory', [

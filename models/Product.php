@@ -73,6 +73,7 @@ class Product extends \yii\db\ActiveRecord
             'material_id' => 'Material ID',
             'flowing_id' => 'Flowing ID',
             'support' => 'Support',
+            'title' =>'Título'
         ];
     }
 

@@ -12,18 +12,44 @@ use yii\data\Sort;
 /* @var $model app\models\Category */
 
 $this->title = $model->description;
+$findUrl = 'category/subcategory?id='.$model->id;
+$sort->route = $findUrl;
 // $this->params['breadcrumbs'][] = ['label' => 'Categories', 'url' => ['index']];
 // $this->params['breadcrumbs'][] = $this->title;
 $script=<<< JS
 var aux=$( ".selected" ).attr( "parent_cat" );
 $( ".category-"+aux ).click();
+$(".filter-title").click(function(){
+  if($( ".arrow-down" ).length){
+   $(".arrow-down").addClass('arrow-up');
+  $(".arrow-up").removeClass('arrow-down');
+  }else{
+       $(".arrow-up").addClass('arrow-down');
+  $(".arrow-down").removeClass('arrow-up');
+  }
+
+    $(".links-filters").toggle(700);
+});
+if ( $( ".asc" ).length ) {
+    
+  $(".arrow-down").addClass('arrow-up');
+  $(".arrow-up").removeClass('arrow-down');
+    $(".links-filters").toggle(700);
+ 
+}
+if ( $( ".desc" ).length ) {
+     $(".arrow-down").addClass('arrow-up');
+  $(".arrow-up").removeClass('arrow-down');
+    $(".links-filters").toggle(700);
+ 
+}
 JS;
 $this->registerJs($script,View::POS_END);
 AppAsset::register($this);
 ?>
 <div class="row container-category-product">
   <div class="col-sm-3 sidebar">
-    <h2><?= $model->category->category->description ?></h2>
+    <h2 class="category-title"><?= $model->category->category->description ?></h2>
     <div class="sidebar-nav">
       <div class="navbar navbar-default" role="navigation">
         <div class="navbar-header">
@@ -62,23 +88,10 @@ AppAsset::register($this);
     </div>
   </div>
   <div class="col-sm-9 container-right">
-      <?php $form = ActiveForm::begin(['method' => 'get']); ?>
-
-    <?= $form->field($searchModel, 'title') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Apply', ['class' => 'btn btn-success']) ?>
+    <div class="row filters">
+      <div class="row"><a class="filter-title" href="javascript:void(0)"><div class="box"><div class="arrow-down"></div></div>Filtrar Y Ordenar</a></div>
+      <div class="row links-filters"><?= $sort->link('title',['class'=>'sorter']) ?></div>
     </div>
-
-    <?php ActiveForm::end(); ?>
-    <?php
-$findUrl = 'category/subcategory?id='.$model->id;
-$sort->route = $findUrl;
-
-// display links leading to sort by name and age, respectively
-echo $sort->link('title');
-
-     ?>
     <?php foreach($dataProvider->getModels() as $product): ?>
    <div class="col-sm-4 gallery">
         <a href="<?= Url::to(['product/view','id'=>$product->id]) ?>">

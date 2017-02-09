@@ -63,7 +63,7 @@ AppAsset::register($this);
 ?>
 <div class="row container-category-product">
   <div class="col-sm-3 sidebar">
-    <h2><?= $model->category->category->category->description ?></h2>
+    <h2 class="category-title"><?= $model->category->category->category->description ?></h2>
     <div class="sidebar-nav">
       <div class="navbar navbar-default" role="navigation">
         <div class="navbar-header">
