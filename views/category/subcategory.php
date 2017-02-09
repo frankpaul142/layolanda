@@ -5,6 +5,9 @@ use yii\widgets\DetailView;
 use yii\helpers\Url;
 use app\assets\AppAsset;
 use yii\web\View;
+use yii\widgets\ActiveForm;
+use sjaakp\alphapager\AlphaPager;
+use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Category */
 
@@ -59,7 +62,17 @@ AppAsset::register($this);
     </div>
   </div>
   <div class="col-sm-9 container-right">
-    <?php foreach($model->products as $product): ?>
+      <?php $form = ActiveForm::begin(['method' => 'get']); ?>
+
+    <?= $form->field($searchModel, 'title') ?>
+
+    <div class="form-group">
+        <?= Html::submitButton('Apply', ['class' => 'btn btn-success']) ?>
+    </div>
+
+    <?php ActiveForm::end(); ?>
+
+    <?php foreach($dataProvider->getModels() as $product): ?>
    <div class="col-sm-4 gallery">
         <a href="<?= Url::to(['product/view','id'=>$product->id]) ?>">
             <?php foreach($product->pictures as $picture): ?>

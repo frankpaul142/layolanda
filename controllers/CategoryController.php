@@ -10,6 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use sjaakp\alphapager\ActiveDataProvider;
 use app\models\Product;
+use app\models\ProductSearch;
 /**
  * CategoryController implements the CRUD actions for Category model.
  */
@@ -71,8 +72,12 @@ class CategoryController extends Controller
     {
         $model=$this->findModel($id);
         $categories=Category::find()->where(['category_id'=>$model->category->category_id])->all();
+        $searchModel = new ProductSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$model->id);
         return $this->render('subcategory', [
-            'model' => $model,'categories'=>$categories
+            'model' => $model,'categories'=>$categories,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 

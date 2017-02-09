@@ -19,7 +19,7 @@ class ProductSearch extends Product
     {
         return [
             [['id', 'artist_id', 'category_id', 'technique_id', 'material_id', 'flowing_id'], 'integer'],
-            [['creation_date', 'description', 'product_date', 'support'], 'safe'],
+            [['creation_date', 'description', 'product_date', 'support','title'], 'safe'],
         ];
     }
 
@@ -39,7 +39,7 @@ class ProductSearch extends Product
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params,$category_param=NULL)
     {
         $query = Product::find();
 
@@ -68,9 +68,12 @@ class ProductSearch extends Product
             'material_id' => $this->material_id,
             'flowing_id' => $this->flowing_id,
         ]);
-
+        if($category_param){
+          $query->andFilterWhere(['category_id' => $category_param]);
+        }
         $query->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'support', $this->support]);
+            ->andFilterWhere(['like', 'support', $this->support])
+            ->andFilterWhere(['like', 'title', $this->title]);
 
         return $dataProvider;
     }
