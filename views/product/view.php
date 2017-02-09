@@ -173,6 +173,7 @@ AppAsset::register($this);
                 <?php foreach($product->pictures as $picture): ?>
                   <div class="image">
                     <img src="<?= URL::base() ?>/images/products/<?= $picture->description ?>" class="img-fluid" />
+                    <img class="bag2" src="<?= URL::base() ?>/images/bag2.svg" />
                   </div>
                 <?php break; endforeach; ?>
                <a  href="<?= Url::to(['product/view','id'=>$product->id]) ?>"><?= $product->title ?></a>

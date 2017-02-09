@@ -260,7 +260,9 @@ font-weight: bold;
     text-decoration: underline;
 }
 .sub-category{
-    font-family: 'Yantramanav' !important;
+        margin-left: 5%;
+    margin-bottom: 3%;
+    margin-top: 3%;
 
 }
 .sub-category:hover{
@@ -643,6 +645,7 @@ background-color: white;
     overflow:hidden;
     padding-bottom:100%;
     margin-bottom: 3%;
+    background-color: black;
 }
 .image img{
     position:absolute;
@@ -661,4 +664,20 @@ background-color: white;
 }
 .parent-category{
      font-family: 'Conv_blue highway bd'; 
-}  
+}
+.bag2{
+    width: 13%;
+    left: 75% !important;
+    top: 85% !important;
+    visibility: hidden;
+      opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+} 
+ .gallery a:hover .bag2{
+   visibility: visible;
+   opacity: 1;
+ } 
+  .img-home a:hover .bag2{
+   visibility: visible;
+   opacity: 1;
+ } 
