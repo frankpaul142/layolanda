@@ -89,6 +89,7 @@
 
 ================================================================================================================================
 
+<<<<<<< Updated upstream
 [02-02-2017 11:43:57] PayPal\Core\PayPalHttpConnection : INFO: POST https://api.sandbox.paypal.com/v1/oauth2/token
 [02-02-2017 11:43:59] PayPal\Core\PayPalHttpConnection : DEBUG: Request Headers 	: POST /v1/oauth2/token HTTP/1.1, Host: api.sandbox.paypal.com, User-Agent: PayPalSDK/PayPal-PHP-SDK 1.11.0 (platform-ver=5.6.29; bit=64; os=Darwin_16.3.0; machine=x86_64; crypto-lib-ver=1.0.2h; curl=7.50.3), Authorization: Basic QWF0VExLaW80NlpGOXdVVHg4NldiWUZrM09XTXVDdHpTX3pLWGYwUzhDRWZoM3c3eTRxcFFlRFp5Y0dmbVo5TzBfS1pDc0NqUExVWFZDaWM6RUI1YTF1Q2tYT1FweURuQUc4SVF3TTBHU3hOSHVqZVZja25WcVZwOTNxLXNKNklOT3U1WHBfUG44eGdkT1BIeW1KZGtpQXRjSTRBbUlYVUk=, Accept: */*, Content-Length: 29, Content-Type: application/x-www-form-urlencoded, , 
 [02-02-2017 11:43:59] PayPal\Core\PayPalHttpConnection : DEBUG: Request Data		: grant_type=client_credentials
@@ -122,3 +123,6 @@
 
 ================================================================================================================================
 
+=======
+[02-02-2017 09:10:44] PayPal\Core\PayPalHttpConnection : INFO: POST https://api.sandbox.paypal.com/v1/payments/payment
+>>>>>>> Stashed changes
