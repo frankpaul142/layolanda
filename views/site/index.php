@@ -13,7 +13,9 @@ $this->title = 'LAYOLANDA | CONCEPT_STORE';
             <div class="col-lg-4 img-home">
                 <a  href="<?= Url::to(['product/view','id'=>$product->id]) ?>">
             <?php foreach($product->pictures as $picture): ?>
+                        <div class="image">
             <img src="<?= URL::base() ?>/images/products/<?= $picture->description ?>" />
+          </div>
             <?php break; endforeach; ?>
                <?= $product->title ?>
                 </a>

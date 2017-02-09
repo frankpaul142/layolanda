@@ -76,16 +76,17 @@ AppAsset::register($this);
         <div class="navbar-collapse collapse sidebar-navbar-collapse vertical-menu">
           <ul class="nav navbar-nav">
             <?php foreach($categories as  $category): ?>
-            <li ><a class="category-<?= $category->id ?>" data-toggle="collapse" data-target="#sub-menu-<?= $category->id ?>" href="#"><?= $category->description ?></a>
+            <li >
+              <a class="category-<?= $category->id ?> parent-category" data-toggle="collapse" data-target="#sub-menu-<?= $category->id ?>" href="javascript:void(0)"><?= $category->description ?></a>
                 <?php if($category->categories): ?>
                 <div id="sub-menu-<?= $category->id ?>" class="collapse internal-sub-menu">
-                <ul class="nav navbar-nav sub-category">
+                <ul class="nav nav-sidebar sub-category">
                     <?php foreach($category->categories as $k => $subcategory): ?>
                     <?php $selected = ($subcategory->id == $model->category_id) ? 'selected' : ''; ?>
-                    <li class="<?= $selected ?>" parent_cat="<?= $category->id ?>" ><a class="subcategory" id="<?= $subcategory->id ?>" href="<?= Url::to(['category/subcategory','id'=>$subcategory->id]) ?>"><?= $subcategory->description ?></a>
+                    <li class="<?= $selected ?>" parent_cat="<?= $category->id ?>" ><a class="subcategory" id="<?= $subcategory->id ?>" href="<?= Url::to(['category/subcategory','id'=>$subcategory->id]) ?>"><?= $subcategory->description ?></a></li>
                    <?php endforeach; ?>
                 </ul>
-              </div>
+                </div>
                 <?php endif; ?>
             </li>
         <?php endforeach; ?>
@@ -101,7 +102,7 @@ AppAsset::register($this);
       </div>
     </div>
   </div>
-  <div class="col-sm-9">
+  <div class="col-sm-9 container-right">
     <h2><?= $model->title ?></h2>
     <div class="col-sm-8 grid">
         <?php foreach($model->pictures as $k => $picture): ?>
@@ -170,7 +171,9 @@ AppAsset::register($this);
                 } ?>
             <div class="col-sm-4 img-home">
                 <?php foreach($product->pictures as $picture): ?>
+                  <div class="image">
                     <img src="<?= URL::base() ?>/images/products/<?= $picture->description ?>" class="img-fluid" />
+                  </div>
                 <?php break; endforeach; ?>
                <a  href="<?= Url::to(['product/view','id'=>$product->id]) ?>"><?= $product->title ?></a>
             </div>

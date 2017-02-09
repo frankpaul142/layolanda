@@ -21,6 +21,29 @@ $(document).ready(function () {
             $(this).toggleClass("active");
         });
     });
+$(document).ready(function(){
+  var altura = $('.main-menu').offset().top;
+  
+  // $(window).on('scroll', function(){
+  //   if ( $(window).scrollTop() > altura ){
+  //     $('.main-menu').addClass('menu-fixed');
+  //   } else {
+  //     $('.main-menu').removeClass('menu-fixed');
+  //   }
+  // });
+  var isMobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
+  if(!isMobile) {
+    $(".container-right").css('float','right');
+ $("#top-menu2").sticky({topSpacing:0,responsiveWidth:true,zIndex:10});
+ $('#top-menu2').on('sticky-start', function() { $('#top-menu2').addClass('sticky');$('.logosticky').show(); });
+ $('#top-menu2').on('sticky-end', function() { $('#top-menu2').removeClass('sticky');$('.logosticky').hide(); });
+$('.sidebar').affix({
+  offset: {
+    top: 235
+  }
+});
+  } 
+});
 JS;
 $this->registerJs($script,View::POS_END);
 AppAsset::register($this);
@@ -35,7 +58,7 @@ AppAsset::register($this);
     <title>LAYOLANDA | <?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body>
+<body >
 
 <?php $this->beginBody() ?>
     <div class="wrap">
@@ -106,7 +129,11 @@ AppAsset::register($this);
       </button>
     </div>
           <div id="top-menu2" class="container-fluid collapse navbar-collapse">
+                           <a class="navbar-brand logosticky" href="<?= URL::base() ?>">
+                <img alt="Brand" src="<?= URL::base() ?>/images/logosticky.png">
+              </a>
         <ul class="nav navbar-nav main-menu">
+
             <li><a href="<?= Url::to(['category/view','id'=>3]) ?>">Nueva Colección</a></li>
             <li><a href="<?= Url::to(['category/view','id'=>1]) ?>">Arte</a></li>
             <li><a href="<?= Url::to(['category/view','id'=>2]) ?>">Artesanía Fina</a></li>

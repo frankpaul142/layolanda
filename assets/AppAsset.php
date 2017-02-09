@@ -19,13 +19,15 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
-        'css/bootstrap-select.min.css'
+        'css/bootstrap-select.min.css',
+        'https://fonts.googleapis.com/css?family=Yantramanav'
     ];
     public $js = [
         'js/masonry.pkgd.min.js',
         'js/imagesloaded.pkgd.js',
         'js/bootstrap-select.min.js',
         'js/bootstrap.min.js',
+        'js/jquery.sticky.js'
         
     ];
     public $depends = [
