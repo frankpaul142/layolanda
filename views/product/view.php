@@ -62,7 +62,7 @@ $this->registerJs($script,View::POS_END);
 AppAsset::register($this);
 ?>
 <div class="row container-category-product">
-  <div class="col-sm-3 sidebar">
+  <div class="col-sm-2 sidebar">
     <h2 class="category-title"><?= $model->category->category->category->description ?></h2>
     <div class="sidebar-nav">
       <div class="navbar navbar-default" role="navigation">
@@ -98,18 +98,28 @@ AppAsset::register($this);
                 <li><a href="#">Póliticas de Privacidad</a></li>
                 <li><a href="#">Términos y Condiciones de compra</a></li>
           </ul>
+          <ul class="nav social collapse">
+                <li><a href="#"><img src="<?= URL::base() ?>/images/facebook.png" /></a></li>
+                <li><a href="#"><img src="<?= URL::base() ?>/images/twitter.png" /></a></li>
+                <!-- <li><a href="#"><img src="<?= URL::base() ?>/images/instagram.svg" /></a></li> -->
+                <li><a href="#"><img src="<?= URL::base() ?>/images/pinterest.png" /></a></li>
+          </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
   </div>
-  <div class="col-sm-9 container-right">
+  <div class="col-sm-10 container-right">
     <h2><?= $model->title ?></h2>
     <div class="col-sm-8 grid">
         <?php foreach($model->pictures as $k => $picture): ?>
         <?php if($k%2){ ?>
-        <div class="grid-item grid-item--width2"><img src="<?= URL::base() ?>/images/products/<?= $picture->description ?>" /></div>
+        <div class="grid-item grid-item--width2">
+          <a href="<?= URL::base() ?>/images/products/<?= $picture->description ?>" data-toggle="lightbox" data-gallery="example-gallery"><img src="<?= URL::base() ?>/images/products/<?= $picture->description ?>" /></a>
+        </div>
         <?php }else{ ?>
-        <div class="grid-item"><img src="<?= URL::base() ?>/images/products/<?= $picture->description ?>" /></div>
+        <div class="grid-item">
+          <a href="<?= URL::base() ?>/images/products/<?= $picture->description ?>" data-toggle="lightbox" data-gallery="example-gallery"><img src="<?= URL::base() ?>/images/products/<?= $picture->description ?>" /></a>
+          </div>
         <?php } ?>
     <?php endforeach; ?>
     </div> 
@@ -155,6 +165,13 @@ AppAsset::register($this);
               rígido.
             </li>
     </ul>
+            <a href="https://www.pinterest.com/pin/create/button/">
+            <img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />
+        </a>
+        <div class="fb-share-button" data-href="<?= Url::current(); ?>" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Compartir</a></div>
+    <a class="twitter-share-button"
+  href="https://twitter.com/intent/tweet?text=<?= $model->title ?>">
+Tweet</a>
     <?php foreach($model->mesuretypes as $mtypes): ?>
     <span id="mtype-<?= $mtypes->id ?>" class="price-product">$<?= $mtypes->price ?><a href="<?= Url::to(['site/addtocart','id'=>$mtypes->id]) ?>"><img src="<?= URL::base() ?>/images/bag1.svg" /></a></p>
     <?php endforeach; ?>

@@ -44,6 +44,33 @@ $('.sidebar').affix({
 });
   } 
 });
+$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+    event.preventDefault();
+    $(this).ekkoLightbox();
+});
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.8&appId=1314153345311081";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
 JS;
 $this->registerJs($script,View::POS_END);
 AppAsset::register($this);
@@ -58,8 +85,8 @@ AppAsset::register($this);
     <title>LAYOLANDA | <?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body >
-
+<body>
+<div id="fb-root"></div>
 <?php $this->beginBody() ?>
     <div class="wrap">
 <?php if(Yii::$app->getSession()->getFlash('success')){ ?>
@@ -85,17 +112,23 @@ AppAsset::register($this);
    <!--            <a class="navbar-brand" href="<?= URL::base() ?>">
                 <img alt="Brand" src="<?= URL::base() ?>/images/logo.png">
               </a> -->
-           
-        <ul class="nav navbar-nav">
-            <li><a class="bag-layout" href="<?= Url::to(['site/viewcart']) ?>"><img src="<?= URL::base() ?>/images/bag1.svg" /></a></li>
-            <?php if(Yii::$app->user->isGuest){ ?>
-            <li><a href="<?= Url::to(['site/login']) ?>">Iniciar Sesión</a></li>
-            <?php }else{ ?>
-            <li><a href="<?= Url::to(['user/index']) ?>"><?= Yii::$app->user->identity->names ?></a></li>
-            <li><a href="<?= Url::to(['site/logout']) ?>">Cerrar Sesión</a></li>
-            <?php } ?>
-            <li class="search-container">
-                <!-- <input class="search-layout" type="text" placeholder="search" /> -->
+                <div class=" row container-search-user">  
+                  <div class="row user-nav">
+                    <ul class="nav navbar-nav user-container-nav">
+                        <li><a class="bag-layout" href="#"><img src="<?= URL::base() ?>/images/es.png" /></a></li>
+                        <li><a class="bag-layout" href="#"><img src="<?= URL::base() ?>/images/en.png" /></a></li>
+                        <li><a class="bag-layout" href="<?= Url::to(['site/viewcart']) ?>"><img src="<?= URL::base() ?>/images/bag1.png" /><span>Bolsa</span></a></li>
+                         <?php if(Yii::$app->user->isGuest){ ?>
+                        <li><a class="bag-layout" href="<?= Url::to(['site/login']) ?>"><img src="<?= URL::base() ?>/images/user.png" /><span>Acceso / Registro</span></a></li>
+                        <?php }else{ ?>
+                        <li><a class="bag-layout" style="margin-top:3px;"href="<?= Url::to(['site/logout']) ?>"><span>Cerrar Sesión</span></a></li>
+                        <li><a class="bag-layout" href="<?= Url::to(['user/index']) ?>"><img src="<?= URL::base() ?>/images/user.png" /><span><?= Yii::$app->user->identity->names ?></span></a></li>
+                        
+                        <?php } ?>
+                    
+                    </ul>
+                  </div>
+                      <div class="search-container row">
                                 <?= Typeahead::widget([
                   'name' => 'search',
                   'options' => ['placeholder' => 'search'],
@@ -115,9 +148,9 @@ AppAsset::register($this);
                       ]
                    ]
                 ]); ?>
-                <img class="img-search" src="<?= URL::base() ?>/images/lupa_.svg" />
-            </li>
-        </ul>
+                <img class="img-search" src="<?= URL::base() ?>/images/lupa.png" />
+              </div>
+            </div>
           </div>
         </nav>
         <nav class="navbar navbar-default" role="navigation">

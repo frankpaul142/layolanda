@@ -47,6 +47,10 @@ body {
     height: 100%;
     font-family: 'Yantramanav';
     color: black;
+    letter-spacing: 0.5mm;
+}
+.container{
+    width: 100% !important; 
 }
 img{
 width: 100%;
@@ -96,6 +100,10 @@ button{
     margin-right: 0px; 
     margin-left: 0px; 
 }
+.navbar-brand {
+    margin:auto;
+    height: auto;
+}
 .container{
 z-index: 5;
 }
@@ -104,6 +112,7 @@ z-index: 5;
      border-color: white;
      padding-left: 1%;
      color: black;
+    /*     margin-top: 2%;*/
 
 }
 .navbar-nav {
@@ -207,6 +216,7 @@ display: inline-block !important;
     float: none !important;
     text-align: center !important;
     font-size: 5.0mm;
+    text-transform: uppercase;
 }
 .collapse-center{
     text-align: center !important;
@@ -233,6 +243,7 @@ font-weight: bold;
     padding-right: 5%;
 }
 @media (min-width: 768px) {
+
   .sidebar-nav .navbar .navbar-collapse {
     padding: 0;
     max-height: none;
@@ -271,10 +282,11 @@ font-weight: bold;
 .politics{
      font-family: 'Yantramanav' !important;
     margin-top: 20%;
-    font-size: 2.7mm;
+    font-size: 2.3mm !important;
 }
 .sidebar{
     padding:0px;
+    text-transform: uppercase;
 }
 .grid-item { width: 44%;margin-left: 1%; margin-bottom: 1% }
 .grid-item--width2 { width: 44%;margin-left: 1%; margin-bottom: 1%}
@@ -290,10 +302,10 @@ font-weight: bold;
 }
 .gallery p{
   font-family: 'Conv_blue highway bd'; 
-  font-size: 4.2mm; 
+  font-size: 3.3mm; 
 }
 .gallery img{
-        margin-bottom: 10px;
+        
 }
 .gallery2{
         min-height: 440px;
@@ -308,7 +320,7 @@ font-weight: bold;
 }
 .bag-layout{
     padding: 0px !important;
-    padding-top: 36% !important;
+
 }
 .bag-layout img{
     width: 27px;
@@ -321,7 +333,7 @@ font-weight: bold;
     float: right !important;
     height: 14px !important;
     position: relative !important;
-    top: 16px !important;
+    top: 22px !important;
     z-index: 2 !important;    
 }
 .tt-scrollable-menu input[type="text"]{
@@ -329,23 +341,28 @@ font-weight: bold;
     /* margin-top: 4%; */
     outline: none !important;
     float: right !important;
-    height: 23px !important;
-    width: 75% !important;
+    height: 11px !important;
+    width: 90% !important;
     position: relative !important;
-    top: -29px !important;
+    top: -28px !important;
     z-index: 2 !important;
     font-size: 3.5mm;
-    left: -12px;
-    -webkit-box-shadow:none;
+    -webkit-box-shadow: none;
     box-shadow: none;
 }
 .img-search{
         position: relative;
-    top: -10px;
     z-index: 1;
+    width: 27px;
 }
 .search-container{
-    width: 180px;
+    width: 100%;
+    z-index: 8;
+    border-bottom: 1px solid black;
+}
+.container-search-user{
+    float:right;
+    margin-top: 0.5%;
 }
 /*.nav > li > a {
 padding: 0px;
@@ -381,6 +398,7 @@ h3{
 .pagination{
     padding-left: 7%;
 }
+
 @media screen and (max-width: 1700px){
 .pagination{
     padding-left: 7%;
@@ -396,25 +414,98 @@ h3{
     padding-left: 2%;
 }
 }
-        @media screen and (max-width: 767px) {  
-#top-menu{
-    float:left;
-}
-#top-menu2{
-    z-index: 1000;
-}
-#button-menu2{
+@media screen and (max-width: 320px){
+.grid-item { width: 43%;margin-left: 1%; margin-bottom: 1% }
+.grid-item--width2 { width: 43%;margin-left: 1%; margin-bottom: 1%}
+    .user-container-nav{
+            display: inline-block !important;
+    float: none !important;
+    text-align: center !important;
+    width: auto !important;
+    }
+    .user-container-nav li{
+        margin-right: 0px !important;
+    }
+    #button-menu2{
     position: relative;
     float: right;
-    top: -200px;
+    top: -194px;
     left: 0px;
-}
-#nav-menu2{
-    margin-bottom: -30px;
+    border: none !important;
+    z-index: 50;
+
 }
 .button-menu3{
         float: left;
     margin-left: 3%;
+    border: none !important;
+    display: block;
+    float: none;
+    margin: auto;
+}
+.category-title{
+        padding: 0px;
+    margin: auto;
+    text-align: center;
+}
+}
+@media screen and (min-width: 321px) and (max-width: 767px) { 
+    .navbar-brand{
+            display: inline-block !important;
+    float: none !important;
+    text-align: center !important;
+    width: 100%;
+    } 
+    .navbar-brand img{
+        margin: 0 auto;
+        display: block;
+        width: auto;
+    }
+    .container-search-user{
+        float: none;
+    }
+    .user-container-nav{
+            display: inline-block !important;
+    float: none !important;
+    text-align: center !important;
+    width: auto !important;
+    }
+#top-menu{
+    float:none;
+}
+.user-nav{
+    width: 100%;
+}
+#top-menu2{
+    z-index: 1;
+    margin-top: 8%;
+}
+#button-menu2{
+    position: absolute;
+    float: right;
+    top: -150px;
+    left: 10px;
+    border: none !important;
+    z-index: 50;
+
+}
+#nav-menu2{
+    margin-bottom: -30px;
+    padding-left: 0;
+    z-index: 10;
+}
+.button-menu3{
+        float: left;
+    margin-left: 3%;
+    border: none !important;
+    display: block;
+    float: none;
+    margin: auto;
+}
+.category-title{
+        padding: 0px;
+    margin: auto;
+    text-align: center;
 }
 .container-category-product{
     margin-top: -50px;
@@ -423,10 +514,10 @@ h3{
 width: 100%;
 text-align: center;
 }
-.img-search{
+/*.img-search{
     height: 61px;
     top:-21px;
-}
+}*/
 .sub-category {
     margin-left: 0%;
 }
@@ -671,6 +762,22 @@ background-color: white;
 .parent-category{
      font-family: 'Conv_blue highway bd'; 
 }
+.user-nav{
+    margin-bottom: 4%;
+    z-index: 10;
+    float: right;
+}
+.user-container-nav{
+width: 100%;
+}
+.user-container-nav li{
+margin-right: 10px;
+float: right;
+}
+.user-container-nav li a span{
+margin-left: 10px;
+
+}
 .bag2{
     width: 13%;
     left: 75% !important;
@@ -728,6 +835,7 @@ background-color: white;
 .links-filters{
     margin-left: 5%;
     display: none;
+    margin-top: 15px;
 }
 .sorter{
     border: 1.5px solid;
@@ -738,7 +846,7 @@ color: white;
 background-color: black; 
 }
 .filter-title{
-        font-size: 4.2mm;
+        font-size: 3.8mm;
 }
 .asc{
 background-color: black;
@@ -755,4 +863,16 @@ color: white;
 .desc:hover{
 color: black;
 background-color: white; 
+}
+.fb-share-button{
+    top:-6px;
+}
+.social li a img{
+    width: auto;
+}
+.social li a {
+    padding: 5px;
+}
+.social li{
+    float: left !important;
 }

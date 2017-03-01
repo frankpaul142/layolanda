@@ -20,14 +20,17 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/site.css',
         'css/bootstrap-select.min.css',
-        'https://fonts.googleapis.com/css?family=Yantramanav'
+        'https://fonts.googleapis.com/css?family=Yantramanav',
+        'css/ekko-lightbox.css'
     ];
     public $js = [
         'js/masonry.pkgd.min.js',
         'js/imagesloaded.pkgd.js',
         'js/bootstrap-select.min.js',
         'js/bootstrap.min.js',
-        'js/jquery.sticky.js'
+        'js/jquery.sticky.js',
+        'js/ekko-lightbox.js',
+        '//assets.pinterest.com/js/pinit.js'
         
     ];
     public $depends = [

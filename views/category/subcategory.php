@@ -48,7 +48,7 @@ $this->registerJs($script,View::POS_END);
 AppAsset::register($this);
 ?>
 <div class="row container-category-product">
-  <div class="col-sm-3 sidebar">
+  <div class="col-sm-2 sidebar">
     <h2 class="category-title"><?= $model->category->category->description ?></h2>
     <div class="sidebar-nav">
       <div class="navbar navbar-default" role="navigation">
@@ -87,13 +87,13 @@ AppAsset::register($this);
       </div>
     </div>
   </div>
-  <div class="col-sm-9 container-right">
+  <div class="col-sm-10 container-right">
     <div class="row filters">
       <div class="row"><a class="filter-title" href="javascript:void(0)"><div class="box"><div class="arrow-down"></div></div>Filtrar Y Ordenar</a></div>
       <div class="row links-filters"><?= $sort->link('title',['class'=>'sorter']) ?></div>
     </div>
     <?php foreach($dataProvider->getModels() as $product): ?>
-   <div class="col-sm-4 gallery">
+   <div class="col-sm-3 gallery">
         <a href="<?= Url::to(['product/view','id'=>$product->id]) ?>">
             <?php foreach($product->pictures as $picture): ?>
             <div class="image">
@@ -102,7 +102,7 @@ AppAsset::register($this);
           </div>
         <?php break; endforeach; ?>
             <span><?= $product->title ?> <?= $product->description ?></span>
-            <p>$<?= $product->minorprice['price'] ?></p>
+            <p>desde $<?= $product->minorprice['price'] ?></p>
         </a>
   </div>
   <?php endforeach; ?>           
