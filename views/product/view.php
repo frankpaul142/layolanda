@@ -149,21 +149,7 @@ AppAsset::register($this);
     <select id="mesure" class="selectpicker" data-style="combo-select" title="Escoge una medida" data-width="80%" >
     </select>
     <ul class="notes">
-            <li>
-            Papel estandar sin enmarcar
-            </li>
-            <li>
-              Papel fotográfico RC de alta resolución,
-              mínimo de 240 gr / m2 acabado brillo.
-          </li>
-            <li>
-              Margen sin imprimir de 5 cm. Por lado que
-              se añaden al tamaño de la lámina.
-            </li>
-            <li>
-              Te llegará en 7 / 15 días enrollada en un tubo
-              rígido.
-            </li>
+<?= $model->description ?>
     </ul>
             <a href="https://www.pinterest.com/pin/create/button/">
             <img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />

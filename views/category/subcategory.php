@@ -8,6 +8,9 @@ use yii\web\View;
 use yii\widgets\ActiveForm;
 use sjaakp\alphapager\AlphaPager;
 use yii\data\Sort;
+use yii\widgets\Pjax;
+use yii\helpers\ArrayHelper;
+use app\models\Type;
 /* @var $this yii\web\View */
 /* @var $model app\models\Category */
 
@@ -43,6 +46,17 @@ if ( $( ".desc" ).length ) {
     $(".links-filters").toggle(700);
  
 }
+$( "#search" ).click(function() {
+  $( "#search-product" ).submit();
+});
+// $('body').on('click', function(event) {
+//   var target = $(event.target);
+//   if (target.parents('.bootstrap-select').length) {
+//         console.log("sop");
+//     event.stopPropagation();
+//     $('.bootstrap-select').toggleClass('open');
+//   }
+// }); 
 JS;
 $this->registerJs($script,View::POS_END);
 AppAsset::register($this);
@@ -90,7 +104,68 @@ AppAsset::register($this);
   <div class="col-sm-10 container-right">
     <div class="row filters">
       <div class="row"><a class="filter-title" href="javascript:void(0)"><div class="box"><div class="arrow-down"></div></div>Filtrar Y Ordenar</a></div>
-      <div class="row links-filters"><?= $sort->link('title',['class'=>'sorter']) ?></div>
+<!--       <div class="row links-filters"><?= $sort->link('title',['class'=>'sorter']) ?></div> -->
+      <?php
+  $form = ActiveForm::begin([ 'id'=>'search-product',
+        'method' => 'get',
+    ]);
+ ?>
+<!-- <div class="col-md-2 links-filters">
+              <div class="btn-group">
+                <button type="button" class="btn btn-large dropdown-toggle combo-select"  data-toggle="dropdown">
+                    Desde <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                    <form class="form col-sm-12"> 
+                      <div class="form-group">
+                       <?=$form->field($searchModel,'price1'); ?>
+                      </div>
+                    </form>
+                  </li>
+                  <li>
+                    <form class="form col-sm-12">    
+                      <select class="selectpicker" data-style="combo-select">
+                        <option>0-100</option>
+                        <option>100-200</option>
+                        <option>200-300</option>
+                      </select>
+                    </form>
+                  </li>
+                </ul>
+            </div></div>
+<div class="col-md-2 links-filters">
+              <div class="btn-group">
+                <button type="button" class="btn btn-large dropdown-toggle" data-toggle="dropdown">
+                    Hasta <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                    <form class="form col-sm-12"> 
+                      <div class="form-group">
+                       <?=$form->field($searchModel,'price2'); ?>
+                      </div>
+                    </form>
+                  </li>
+                  <li>
+                    <form class="form col-sm-12">    
+                      <select class="selectpicker" data-style="combo-select" multiple="">
+                        <option>0-100</option>
+                        <option>100-200</option>
+                        <option>200-300</option>
+                      </select>
+                    </form>
+                  </li>
+                </ul>
+            </div></div> -->
+    <div class="col-md-2 links-filters"><?=$form->field($searchModel,'price1'); ?></div>
+    <div class="col-md-2 links-filters"><?=$form->field($searchModel,'price2'); ?></div>
+    <div class="col-md-2 links-filters"><?= $form->field($searchModel, 'size')->DropDownList([''=>'Todos','S'=>'S','M'=>'M','L'=>'L'],['title'=>'Tamaño','data-style'=>'combo-select','class'=>'selectpicker','data-width'=>'100%']) ?></div> 
+    <div class="col-md-2 links-filters"><?= $form->field($searchModel, 'type')->DropDownList(ArrayHelper::map(type::find()->orderBy(['description' => SORT_ASC])->all(), 'id', 'title'),['title'=>'Tipo','data-style'=>'combo-select','class'=>'selectpicker','data-width'=>'100%']) ?></div> 
+    <div class="col-md-2 links-filters"><p>&nbsp;</p><a id="search" href="javascript:void(0)"><img class="img-search" src="<?= URL::base() ?>/images/lupa.png" />&nbsp;Buscar</a></div>
+<?php 
+ActiveForm::end();
+?>
     </div>
     <?php foreach($dataProvider->getModels() as $product): ?>
    <div class="col-sm-3 gallery">
@@ -101,7 +176,7 @@ AppAsset::register($this);
             <img class="bag2" src="<?= URL::base() ?>/images/bag2.svg" />
           </div>
         <?php break; endforeach; ?>
-            <span><?= $product->title ?> <?= $product->description ?></span>
+            <span><?= $product->title ?> (<?= date('Y',strtotime($product->product_date)) ?>)<br><?= $product->artist->name ?></span>
             <p>desde $<?= $product->minorprice['price'] ?></p>
         </a>
   </div>

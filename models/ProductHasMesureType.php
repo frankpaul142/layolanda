@@ -47,7 +47,7 @@ class ProductHasMesureType extends \yii\db\ActiveRecord implements CartPositionI
     public function rules()
     {
         return [
-            [['product_id', 'mesure_id', 'price', 'type_id', 'creation_date'], 'required'],
+            [['product_id', 'mesure_id', 'price', 'type_id', 'creation_date','size'], 'required'],
             [['product_id', 'mesure_id', 'type_id'], 'integer'],
             [['price'], 'number'],
             [['creation_date'], 'safe'],

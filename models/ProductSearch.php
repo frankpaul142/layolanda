@@ -15,11 +15,15 @@ class ProductSearch extends Product
     /**
      * @inheritdoc
      */
+    public $price1;
+    public $price2;
+    public $size;
+    public $type;
     public function rules()
     {
         return [
-            [['id', 'artist_id', 'category_id', 'technique_id', 'material_id', 'flowing_id'], 'integer'],
-            [['creation_date', 'description', 'product_date', 'support','title'], 'safe'],
+            [['id', 'artist_id', 'category_id', 'technique_id', 'material_id', 'flowing_id','type'], 'integer'],
+            [['creation_date', 'description', 'product_date', 'support','title','price1','price2','size'], 'safe'],
         ];
     }
 
@@ -31,7 +35,16 @@ class ProductSearch extends Product
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
-
+    public function attributeLabels()
+    {
+        return [
+            'price1' => 'Desde',
+            'price2' => 'Hasta',
+            'size' => 'Tamaño',
+            'type' => 'Tipo',
+    
+        ];
+    }
     /**
      * Creates data provider instance with search query applied
      *
@@ -41,7 +54,7 @@ class ProductSearch extends Product
      */
     public function search($params,$category_param=NULL)
     {
-        $query = Product::find();
+        $query = Product::find()->joinWith(['mesuretypes']);
 
         // add conditions that should always apply here
 
@@ -67,13 +80,16 @@ class ProductSearch extends Product
             'technique_id' => $this->technique_id,
             'material_id' => $this->material_id,
             'flowing_id' => $this->flowing_id,
+            'size' => $this->size,
+            'type_id' => $this->type,
         ]);
         if($category_param){
           $query->andFilterWhere(['category_id' => $category_param]);
         }
         $query->andFilterWhere(['like', 'description', $this->description])
             ->andFilterWhere(['like', 'support', $this->support])
-            ->andFilterWhere(['like', 'title', $this->title]);
+            ->andFilterWhere(['like', 'title', $this->title])
+            ->andFilterWhere(['between', 'price', $this->price1,$this->price2]);
 
         return $dataProvider;
     }
