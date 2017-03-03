@@ -11,6 +11,7 @@ use app\models\ForgotForm;
 use app\models\ContactForm;
 use app\models\User;
 use app\models\Product;
+use app\models\Category;
 use app\models\ProductHasMesureType;
 use yii\helpers\Json;
 use yii\helpers\Url;
@@ -114,7 +115,8 @@ class SiteController extends Controller
 
     public function actionViewcart(){
 
-        return $this->render('cart');   
+        $categories=Category::find()->where(['category_id'=>1])->all();
+        return $this->render('cart',['categories'=>$categories]);   
     }
 
     public function actionLogout()

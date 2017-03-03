@@ -132,6 +132,10 @@ class Product extends \yii\db\ActiveRecord
     {
         return $this->hasMany(ProductHasMesureType::className(), ['product_id' => 'id']);
     }
+        public function getOriginal()
+    {
+        return $this->hasMany(ProductHasMesureType::className(), ['product_id' => 'id'])->andWhere(['type_id'=>1])->one();
+    }
         public function getMinorprice()
     {
         return $this->hasMany(ProductHasMesureType::className(), ['product_id' => 'id'])->orderBy(['price'=>SORT_DESC])->one();

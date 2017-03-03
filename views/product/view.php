@@ -139,15 +139,31 @@ AppAsset::register($this);
         <span>Soporte</span>
         <p><?= $model->support ?></p>
     </div>
-    <span>Láminas</span>
+    <div class="original-container">
+      <span>Original</span>
+      <p><?= $model->original->mesure->description ?></p>
+      <span id="mtype-<?= $model->original->id ?>" class="price-product-original" style="display:block;">$<?= $model->original->price ?><a href="<?= Url::to(['site/addtocart','id'=>$model->original->id]) ?>"><img src="<?= URL::base() ?>/images/bag1.svg" /></a></p>
+    </div>
+    <?php if(count($model->types)>1): ?>
+    <div class="more-container">
+    <span>Réplicas</span>
     <p>Papel y acabado / Tamaño / Marco</p>
     <select id="type" class="selectpicker" data-style="combo-select" title="Escoge un tipo" data-width="80%" >
         <?php foreach($model->types as $type): ?>
+        <?php if($type->id!=1): ?>
         <option value="<?= $type->id ?>"><?= $type->description ?></option>
+         <?php endif; ?>
     <?php endforeach; ?>
     </select>
     <select id="mesure" class="selectpicker" data-style="combo-select" title="Escoge una medida" data-width="80%" >
     </select>
+  </div>
+  <?php endif; ?>
+      <?php foreach($model->mesuretypes as $mtypes): ?>
+    <?php if($type->id!=1): ?>
+    <span id="mtype-<?= $mtypes->id ?>" class="price-product">$<?= $mtypes->price ?><a href="<?= Url::to(['site/addtocart','id'=>$mtypes->id]) ?>"><img src="<?= URL::base() ?>/images/bag1.svg" /></a></p></span>
+    <?php endif; ?>
+    <?php endforeach; ?>
     <ul class="notes">
 <?= $model->description ?>
     </ul>
@@ -158,9 +174,6 @@ AppAsset::register($this);
     <a class="twitter-share-button"
   href="https://twitter.com/intent/tweet?text=<?= $model->title ?>">
 Tweet</a>
-    <?php foreach($model->mesuretypes as $mtypes): ?>
-    <span id="mtype-<?= $mtypes->id ?>" class="price-product">$<?= $mtypes->price ?><a href="<?= Url::to(['site/addtocart','id'=>$mtypes->id]) ?>"><img src="<?= URL::base() ?>/images/bag1.svg" /></a></p>
-    <?php endforeach; ?>
     </div>
     <div class="row more-products">
         <h3>Otras Obras _</h3>
