@@ -179,7 +179,7 @@ AppAsset::register($this);
 		<div class="cont-fpago">
         <h1>Pagar Con:</h1>
        
-        	<a id="paypal" href="#" class="btn-pago"><img class="paylogo" src="<?= URL::base() ?>/images/paypal.jpg" /></a>
+        	<a id="paypal" href="#" class="btn-pago"><img class="paylogo" src="<?= URL::base() ?>/images/tarjetas.png" /></a>
                
         </div>
         	<!-- <input type="submit" value="PAGAR AHORA"/> -->
