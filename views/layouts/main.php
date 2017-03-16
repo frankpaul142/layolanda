@@ -132,7 +132,7 @@ AppAsset::register($this);
                 <div class=" row container-search-user">  
                   <div class="row user-nav">
                     <ul class="nav navbar-nav user-container-nav">
-                        <li><a class="bag-layout" href="#"><img src="<?= URL::base() ?>/images/es.png" /></a></li>
+                        <!-- <li><a class="bag-layout" href="#"><img src="<?= URL::base() ?>/images/es.png" /></a></li> -->
                         <li><a class="bag-layout" href="#"><img src="<?= URL::base() ?>/images/en.png" /></a></li>
                         <li><a class="bag-layout" href="<?= Url::to(['site/viewcart']) ?>"><img src="<?= URL::base() ?>/images/bag1.png" /><span>Cesta</span></a></li>
                          <?php if(Yii::$app->user->isGuest){ ?>
@@ -148,7 +148,7 @@ AppAsset::register($this);
                       <div class="search-container row">
                                 <?= Typeahead::widget([
                   'name' => 'search',
-                  'options' => ['placeholder' => 'search'],
+                  'options' => ['placeholder' => ''],
                   'scrollable' => true,
                   'pluginOptions' => ['highlight'=>true],
                   'dataset' => [

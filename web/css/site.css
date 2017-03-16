@@ -341,8 +341,8 @@ font-weight: bold;
     /* margin-top: 4%; */
     outline: none !important;
     float: right !important;
-    height: 11px !important;
-    width: 90% !important;
+    height: 15px !important;
+    width: 100% !important;
     position: relative !important;
     top: -28px !important;
     z-index: 2 !important;
@@ -351,9 +351,12 @@ font-weight: bold;
     box-shadow: none;
 }
 .img-search{
-        position: relative;
-    z-index: 1;
+    position: relative;
+    z-index: 2;
     width: 27px;
+    float: right;
+    left: 88%;
+    top: -2px;
 }
 .search-container{
     width: 100%;
@@ -797,7 +800,7 @@ width: 100%;
  text-transform: uppercase;
 }
 .user-container-nav li{
-margin-right: 10px;
+margin-left: 20px;
 float: right;
 }
 .user-container-nav li a span{
