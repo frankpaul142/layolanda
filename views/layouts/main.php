@@ -134,7 +134,7 @@ AppAsset::register($this);
                     <ul class="nav navbar-nav user-container-nav">
                         <li><a class="bag-layout" href="#"><img src="<?= URL::base() ?>/images/es.png" /></a></li>
                         <li><a class="bag-layout" href="#"><img src="<?= URL::base() ?>/images/en.png" /></a></li>
-                        <li><a class="bag-layout" href="<?= Url::to(['site/viewcart']) ?>"><img src="<?= URL::base() ?>/images/bag1.png" /><span>Bolsa</span></a></li>
+                        <li><a class="bag-layout" href="<?= Url::to(['site/viewcart']) ?>"><img src="<?= URL::base() ?>/images/bag1.png" /><span>Cesta</span></a></li>
                          <?php if(Yii::$app->user->isGuest){ ?>
                         <li><a class="bag-layout" href="<?= Url::to(['site/login']) ?>"><img src="<?= URL::base() ?>/images/user.png" /><span>Acceso / Registro</span></a></li>
                         <?php }else{ ?>

@@ -160,8 +160,8 @@ AppAsset::register($this);
             </div></div> -->
     <div class="col-md-2 links-filters"><?=$form->field($searchModel,'price1'); ?></div>
     <div class="col-md-2 links-filters"><?=$form->field($searchModel,'price2'); ?></div>
-    <div class="col-md-2 links-filters"><?= $form->field($searchModel, 'size')->DropDownList([''=>'Todos','S'=>'S','M'=>'M','L'=>'L'],['title'=>'Tamaño','data-style'=>'combo-select','class'=>'selectpicker','data-width'=>'100%']) ?></div> 
-    <div class="col-md-2 links-filters"><?= $form->field($searchModel, 'type')->DropDownList(ArrayHelper::map(type::find()->orderBy(['description' => SORT_ASC])->all(), 'id', 'title'),['title'=>'Tipo','data-style'=>'combo-select','class'=>'selectpicker','data-width'=>'100%']) ?></div> 
+    <div class="col-md-2 links-filters"><?= $form->field($searchModel, 'type')->DropDownList(ArrayHelper::map(type::find()->orderBy(['description' => SORT_DESC])->all(), 'id', 'title'),['title'=>'Tipo','data-style'=>'combo-select','class'=>'selectpicker','data-width'=>'100%']) ?></div> 
+    <div class="col-md-2 links-filters"><?= $form->field($searchModel, 'size')->DropDownList([''=>'Todos','S'=>'Pequeño','M'=>'Mediano','L'=>'Grande'],['title'=>'Tamaño','data-style'=>'combo-select','class'=>'selectpicker','data-width'=>'100%']) ?></div> 
     <div class="col-md-2 links-filters"><p>&nbsp;</p><a id="search" href="javascript:void(0)"><img class="img-search" src="<?= URL::base() ?>/images/lupa.png" />&nbsp;Buscar</a></div>
 <?php 
 ActiveForm::end();
@@ -173,7 +173,7 @@ ActiveForm::end();
             <?php foreach($product->pictures as $picture): ?>
             <div class="image">
             <img src="<?= URL::base() ?>/images/products/<?= $picture->description ?>" />
-            <img class="bag2" src="<?= URL::base() ?>/images/bag2.svg" />
+            <img class="bag2" src="<?= URL::base() ?>/images/bag1.png" />
           </div>
         <?php break; endforeach; ?>
             <span><?= $product->title ?> (<?= date('Y',strtotime($product->product_date)) ?>)<br><?= $product->artist->name ?></span>

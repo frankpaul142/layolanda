@@ -142,7 +142,7 @@ AppAsset::register($this);
     <div class="original-container">
       <span>Original</span>
       <p><?= $model->original->mesure->description ?></p>
-      <span id="mtype-<?= $model->original->id ?>" class="price-product-original" style="display:block;">$<?= $model->original->price ?><a href="<?= Url::to(['site/addtocart','id'=>$model->original->id]) ?>"><img src="<?= URL::base() ?>/images/bag1.svg" /></a></p>
+      <span id="mtype-<?= $model->original->id ?>" class="price-product-original" style="display:block;">$<?= $model->original->price ?><a href="<?= Url::to(['site/addtocart','id'=>$model->original->id]) ?>"><img src="<?= URL::base() ?>/images/bag1.png" /></a></p>
     </div>
     <?php if(count($model->types)>1): ?>
     <div class="more-container">
