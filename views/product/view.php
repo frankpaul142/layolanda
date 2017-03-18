@@ -109,8 +109,7 @@ AppAsset::register($this);
     </div>
   </div>
   <div class="col-sm-10 container-right">
-    <h2><?= $model->title ?></h2>
-    <div class="col-sm-8 grid">
+    <div class="col-sm-9 grid">
         <?php foreach($model->pictures as $k => $picture): ?>
         <?php if($k%2){ ?>
         <div class="grid-item grid-item--width2">
@@ -123,9 +122,9 @@ AppAsset::register($this);
         <?php } ?>
     <?php endforeach; ?>
     </div> 
-    <div class="col-sm-4 detail">
+    <div class="col-sm-3 detail">
         <div class="description-product">
-        <h3>Detalles _</h3>
+        <h3><?= $model->title ?></h3>
         <span>Autor</span>
         <p><?= $model->artist->name ?></p>
         <p><?= $model->artist->country->country_name ?></p>
@@ -167,6 +166,7 @@ AppAsset::register($this);
     <ul class="notes">
 <?= $model->description ?>
     </ul>
+    <br>
             <a href="https://www.pinterest.com/pin/create/button/">
             <img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />
         </a>

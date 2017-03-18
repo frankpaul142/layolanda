@@ -809,8 +809,8 @@ margin-left: 10px;
 }
 .bag2{
     width: 13%;
-    left: 75% !important;
-    top: 85% !important;
+    left: 80% !important;
+    top: 75% !important;
     visibility: hidden;
       opacity: 0;
     transition: visibility 0s, opacity 0.5s linear;

@@ -15,7 +15,7 @@ $this->title = 'LAYOLANDA | CONCEPT_STORE';
             <?php foreach($product->pictures as $picture): ?>
                         <div class="image">
             <img src="<?= URL::base() ?>/images/products/<?= $picture->description ?>" />
-            <img class="bag2" src="<?= URL::base() ?>/images/bag2.svg" />
+            <img class="bag2" src="<?= URL::base() ?>/images/bag2.png" />
           </div>
             <?php break; endforeach; ?>
                <?= $product->title ?>

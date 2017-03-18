@@ -173,7 +173,7 @@ ActiveForm::end();
             <?php foreach($product->pictures as $picture): ?>
             <div class="image">
             <img src="<?= URL::base() ?>/images/products/<?= $picture->description ?>" />
-            <img class="bag2" src="<?= URL::base() ?>/images/bag1.png" />
+            <img class="bag2" src="<?= URL::base() ?>/images/bag2.png" />
           </div>
         <?php break; endforeach; ?>
             <span><?= $product->title ?> (<?= date('Y',strtotime($product->product_date)) ?>)<br><?= $product->artist->name ?></span>
