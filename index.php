@@ -102,7 +102,7 @@ $('document').ready(function() {
 <div id="wrapper"></div>
     <article>
         <img src="web/images/logo.png">
-  <h1>Please Choose A Language<br /> <span><a class="text-left" href="web/index.php" >Spanish </a><a class="text-right" href="web/index.php"> English</a></span></h1>
+  <h1><span><a class="text-left" href="web/index.php" >Spanish </a><a class="text-right" href="web/index.php"> English</a></span></h1>
 </article>
 </body>
 </html>

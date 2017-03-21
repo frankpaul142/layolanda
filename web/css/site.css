@@ -215,7 +215,7 @@ a.desc:after {
 display: inline-block !important;
     float: none !important;
     text-align: center !important;
-    font-size: 5.0mm;
+    font-size: 4.5mm;
     text-transform: uppercase;
 }
 .collapse-center{
@@ -241,6 +241,11 @@ font-weight: bold;
 .header-top{
         padding-left: 5%;
     padding-right: 5%;
+}
+@media (max-width: 768px){
+        .img-search{
+        position: inherit !important; 
+    }
 }
 @media (min-width: 768px) {
 
