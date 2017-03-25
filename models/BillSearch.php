@@ -15,11 +15,13 @@ class BillSearch extends Bill
     /**
      * @inheritdoc
      */
+
+    public $user;
     public function rules()
     {
         return [
             [['id', 'user_id', 'billing_id', 'delivery_id'], 'integer'],
-            [['creation_date', 'status', 'pay_method', 'observation'], 'safe'],
+            [['creation_date', 'status', 'pay_method', 'observation','user'], 'safe'],
             [['subtotal'], 'number'],
         ];
     }
@@ -42,7 +44,8 @@ class BillSearch extends Bill
      */
     public function search($params)
     {
-        $query = Bill::find();
+        $query = Bill::find()->joinWith(['user']);
+;
 
         // add conditions that should always apply here
 
@@ -69,6 +72,7 @@ class BillSearch extends Bill
         ]);
 
         $query->andFilterWhere(['like', 'status', $this->status])
+            ->andFilterWhere(['like', 'user.email', $this->user])
             ->andFilterWhere(['like', 'pay_method', $this->pay_method])
             ->andFilterWhere(['like', 'observation', $this->observation]);
 

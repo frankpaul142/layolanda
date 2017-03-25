@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-
+use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model app\models\Product */
 
@@ -29,18 +29,24 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'artist_id',
-            'category_id',
+            'title',
+            'artist.name',
+            'category.description',
             'creation_date',
             'description',
             'product_date',
-            'technique_id',
-            'material_id',
-            'flowing_id',
+            'technique.description',
+            'material.description',
+            'flowing.description',
             'support',
-            'title',
             'important',
         ],
     ]) ?>
-
+    <div class="row">
+    <?php foreach($model->pictures as $picture): ?>
+        <div class=col-sm-3>
+            <img  class="img-responsive" src="<?= URL::base() ?>/images/products/<?= $picture->description ?>">
+        </div>
+    <?php endforeach; ?>
+    </div>
 </div>

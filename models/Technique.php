@@ -43,7 +43,7 @@ class Technique extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'creation_date' => 'Creation Date',
-            'description' => 'Description',
+            'description' => 'Técnica',
         ];
     }
 

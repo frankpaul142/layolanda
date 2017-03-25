@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PictureSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -27,7 +27,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'product_id',
             'creation_date',
-            'description',
+                        array(
+           'attribute' => 'description',
+            'format' => 'html',
+            'value' => function($data) { return Html::img(URL::base().'/images/products/'.$data->description, ['width'=>'250']); }
+
+
+               ),
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -138,11 +138,13 @@ AppAsset::register($this);
         <span>Soporte</span>
         <p><?= $model->support ?></p>
     </div>
+    <?php if($model->original): ?>
     <div class="original-container">
       <span>Original</span>
       <p><?= $model->original->mesure->description ?></p>
       <span id="mtype-<?= $model->original->id ?>" class="price-product-original" style="display:block;">$<?= $model->original->price ?><a href="<?= Url::to(['site/addtocart','id'=>$model->original->id]) ?>"><img src="<?= URL::base() ?>/images/bag1.png" /></a></p>
     </div>
+    <?php endif; ?>
     <?php if(count($model->types)>1): ?>
     <div class="more-container">
     <span>Réplicas</span>
@@ -158,11 +160,13 @@ AppAsset::register($this);
     </select>
   </div>
   <?php endif; ?>
-      <?php foreach($model->mesuretypes as $mtypes): ?>
-    <?php if($type->id!=1): ?>
+      <?php 
+      if($model->mesuretypes):
+      foreach($model->mesuretypes as $mtypes): ?>
+    <?php if($mtypes->id!=1): ?>
     <span id="mtype-<?= $mtypes->id ?>" class="price-product">$<?= $mtypes->price ?><a href="<?= Url::to(['site/addtocart','id'=>$mtypes->id]) ?>"><img src="<?= URL::base() ?>/images/bag1.svg" /></a></p></span>
     <?php endif; ?>
-    <?php endforeach; ?>
+    <?php endforeach; endif; ?>
     <ul class="notes">
 <?= $model->description ?>
     </ul>

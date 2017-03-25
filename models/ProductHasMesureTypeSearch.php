@@ -15,12 +15,15 @@ class ProductHasMesureTypeSearch extends ProductHasMesureType
     /**
      * @inheritdoc
      */
+    public $product;
+    public $mesure;
+    public $type;
     public function rules()
     {
         return [
             [['id', 'product_id', 'mesure_id', 'type_id'], 'integer'],
             [['price'], 'number'],
-            [['creation_date'], 'safe'],
+            [['creation_date','product','mesure','type'], 'safe'],
         ];
     }
 
@@ -42,7 +45,7 @@ class ProductHasMesureTypeSearch extends ProductHasMesureType
      */
     public function search($params)
     {
-        $query = ProductHasMesureType::find();
+        $query = ProductHasMesureType::find()->joinWith(['product','mesure','type']);
 
         // add conditions that should always apply here
 
@@ -67,6 +70,9 @@ class ProductHasMesureTypeSearch extends ProductHasMesureType
             'type_id' => $this->type_id,
             'creation_date' => $this->creation_date,
         ]);
+        $query->andFilterWhere(['like', 'product.title', $this->product])
+            ->andFilterWhere(['like', 'mesure.description', $this->mesure])
+            ->andFilterWhere(['like', 'type.description', $this->type]);
 
         return $dataProvider;
     }

@@ -100,7 +100,7 @@ class ProductController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Product::findOne($id)) !== null) {
+        if (($model = Product::find()->where(['id'=>$id,'status'=>'ACTIVE'])->one()) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

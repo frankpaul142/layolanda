@@ -64,7 +64,7 @@ class Detail extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getProductHasMesureType()
+    public function getProductmt()
     {
         return $this->hasOne(ProductHasMesureType::className(), ['id' => 'product_has_mesure_type_id']);
     }

@@ -26,13 +26,18 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'user_id',
+             [
+             'attribute' => 'user',
+             'value' => 'user.username',
+             'label' =>'Email Cliente'
+             ],
             'creation_date',
             'subtotal',
             'status',
-            // 'pay_method',
+             'pay_method',
             // 'billing_id',
             // 'delivery_id',
-            // 'observation:ntext',
+             'observation:ntext',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

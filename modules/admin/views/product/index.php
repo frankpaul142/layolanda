@@ -25,8 +25,30 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'artist_id',
+            'title',
+             'artist_id',
+             [
+             'attribute' => 'artist',
+             'value' => 'artist.name',
+             'label' =>'Artista'
+             ],
             'category_id',
+             [
+             // 'attribute' => 'artist',
+             'value' => 'category.description',
+             'label' =>'Categoría'
+             ],
+                         [
+             'attribute' => 'technique',
+             'value' => 'technique.description',
+             'label' =>'Técnica'
+             ],
+             [
+             'attribute' => 'flowing',
+             'value' => 'flowing.description',
+             'label' =>'Corriente'
+             ],
+            'important',
             'creation_date',
             'description',
             // 'product_date',

@@ -26,9 +26,25 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'product_id',
+            [
+             'attribute' => 'product',
+             'value' => 'product.title',
+             'label' =>'Producto'
+             ],
             'mesure_id',
+             [
+             'attribute' => 'mesure',
+             'value' => 'mesure.description',
+             'label' =>'Medida'
+             ],
+             'type_id',
+              [
+             'attribute' => 'type',
+             'value' => 'type.description',
+             'label' =>'Tipo'
+             ],
             'price',
-            'type_id',
+
             // 'creation_date',
 
             ['class' => 'yii\grid\ActionColumn'],

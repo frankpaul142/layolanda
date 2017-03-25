@@ -69,26 +69,6 @@ FileInput::widget([
 ]);
 
     ?>
-    <?php }else{ ?>
-    <?= 
-FileInput::widget([
-    'name' => 'pictures[]',
-    'options'=>[
-        'multiple'=>true
-    ],
-   'pluginOptions' => [
-         'uploadUrl' => Url::to(['pictures-upload']),
-         'deleteUrl' => Url::to(['pictures-delete']),
-        'uploadExtraData' => [
-            'product_id' => $model->id
-        ],
-        'initialCaption'=>"Imágenes del Producto",
-        'overwriteInitial'=>false,
-        'maxFileSize'=>2800
-    ]
-]);
-
-    ?>
     <?php } ?>
 
     <div class="form-group">

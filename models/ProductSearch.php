@@ -19,11 +19,15 @@ class ProductSearch extends Product
     public $price2;
     public $size;
     public $type;
+    public $material;
+    public $flowing;
+    public $technique;
+    public $artist;
     public function rules()
     {
         return [
             [['id', 'artist_id', 'category_id', 'technique_id', 'material_id', 'flowing_id','type'], 'integer'],
-            [['creation_date', 'description', 'product_date', 'support','title','price1','price2','size'], 'safe'],
+            [['creation_date', 'description', 'product_date', 'support','title','price1','price2','size','material','flowing','technique','artist'], 'safe'],
         ];
     }
 
@@ -54,7 +58,7 @@ class ProductSearch extends Product
      */
     public function search($params,$category_param=NULL)
     {
-        $query = Product::find()->joinWith(['mesuretypes']);
+        $query = Product::find()->joinWith(['mesuretypes','artist','technique','material','flowing']);
 
         // add conditions that should always apply here
 
@@ -89,6 +93,10 @@ class ProductSearch extends Product
         $query->andFilterWhere(['like', 'description', $this->description])
             ->andFilterWhere(['like', 'support', $this->support])
             ->andFilterWhere(['like', 'title', $this->title])
+            ->andFilterWhere(['like', 'technique.description', $this->technique])
+            ->andFilterWhere(['like', 'artist.name', $this->artist])
+            ->andFilterWhere(['like', 'material.description', $this->material])
+            ->andFilterWhere(['like', 'flowing.description', $this->flowing])
             ->andFilterWhere(['between', 'price', $this->price1,$this->price2]);
 
         return $dataProvider;
