@@ -434,11 +434,11 @@ h2{
 }
 h3{
  font-family: 'Conv_blue highway bd'; 
- font-size: 4.8mm; 
+ font-size: 4.5mm; 
 }
 .detail span{
      font-family: 'Conv_blue highway bd';
-     font-size: 3.8mm;
+     font-size: 3.5mm;
 }
 .description-product{
     border-bottom: 1px black solid;
@@ -962,6 +962,9 @@ background-color: white;
 }
 .fb-share-button{
     top:-6px;
+}
+.social{
+    margin-top: 5%;
 }
 .social li a img{
     width: auto;
