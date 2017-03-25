@@ -81,18 +81,24 @@ AppAsset::register($this);
   </div>
   <div class="col-sm-10 container-right">
 	<div class="cont-titulos">
-    	<h1>CARRITO DE COMPRAS</h1>
-        <p>Revisa tu carrito de compras</p>
+    	<h3>CARRITO DE COMPRAS</h3>
 	</div>
     <div class="cont-formulario">
     	     <?php $form = ActiveForm::begin(['action' => ['shop/paypal'],'options' => ['method' => 'post']]); ?>
-   		<div class="cont-campos-header">
-        	<div class="cont-imgthumb tit-carrit">&nbsp;</div>
-        	<div class="cont-txt tit-carrit">&nbsp;</div>
-            <div class="cont-cant tit-carri">CANTIDAD</div>
-            <div class="cont-valor tit-carri">VALOR UNITARIO</div>
-             <div class="cont-valor tit-carri">VALOR</div>
+            <div class="table-responsive">
+   		<table class="table table-sm table-responsive">
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Valor Unitario</th>
+                <th>Valor</th>
+                <th>Eliminar</th>
+              </tr>
+            </thead>
         </div>
+        <tbody>
         <?php
    foreach(Yii::$app->cart->positions as $position){
           echo $this->render('_cart_item',['position'=>$position]);
@@ -105,16 +111,44 @@ AppAsset::register($this);
       $number=Yii::$app->cart->getCost(true)*$iva;
       $impuesto=number_format((float)$number, 2, '.', '');
       ?>
-  		
-        <div class="cont-campos-header">
-        	<div class="cont-imgthumb tit-carrit">&nbsp;</div>
-        	<div class="cont-txt tit-carrit">&nbsp;</div>
-            <div class="cont-cant tit-carrit">&nbsp;</div>
-            <div class="cont-cant c-gris">TOTAL+IVA</div>
-            <div class="cont-valor c-gris">$<?= Yii::$app->cart->getCost(true)+$impuesto ?></div>
-            
-		</div>
-        <a class="link-comprar" href="<?= Url::to(['site/index']) ?>">Seguir Comprando</a>
+
+<!--         <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            Shipping Estimado:
+            </td>
+            <td>
+            $0
+            </td>
+        </tr> -->
+            </tbody>
+            <tfoot>
+                <tr>
+                <th colspan="5">
+                Shipping Estimado:
+                </th>
+                <td>
+                $0
+                </td>
+                </tr>
+                <tr>
+                <th colspan="5">
+                Total:
+                </th>
+                <td>
+                $<?= Yii::$app->cart->getCost(true)+$impuesto ?>
+                </td>
+                </tr>
+            </tfoot>
+        </table>
+        </div>
       <input type="hidden" name="subtotal" value="<?= Yii::$app->cart->getCost(true) ?>" />
 
        	<?php if(!Yii::$app->user->isGuest): ?>

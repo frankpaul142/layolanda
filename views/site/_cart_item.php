@@ -1,31 +1,33 @@
 <?php 
 use yii\helpers\Url;
 ?>
-  	<div class="cont-campos">
+  	<tr>
      
-            <div class="cont-imgthumb">
+            <td class="cont-imgthumb">
             	<img src="<?= URL::base() ?>/images/products/<?= $position->product->pictures[0]->description ?>" alt="producto"/>
-                 <div class="erase-product"><a href="<?= Url::to(['site/removefromcart','id'=>$position->id]) ?>"><div id="orangeBox">
-  <span id="x">X</span>
-</div></a></div>
-       
-            </div>
 
-            <div class="cont-txt">
+       
+            </td>
+
+            <td >
             	<?= $position->product->title ?>-<?= $position->mesure->description ?>-<?= $position->type->description ?>
 
-            </div>
+            </td>
             <?php if($position->id!=70000076){ ?>
-            <div class="cont-cant"><input type="text" class="change_q" readonly="readonly" posid="<?= $position->id ?>" value="<?= $position->quantity ?>" /></div>
+            <td ><input type="text" class="change_q" readonly="readonly" posid="<?= $position->id ?>" value="<?= $position->quantity ?>" /></td>
             
             <?php }else{ ?>
-            <div class="cont-cant">-</div>
+            <td >-</td>
             <?php } ?>
-            <div class="cont-valor">
+            <td >
               <span class="valores-p c-blue">$<?= $position->getPrice() ?></span>
-                   </div>
-                <div class="cont-valor">$<?= $position->getPrice()*$position->quantity ?></div>
-
-            
+             </td>
+              <td >$<?= $position->getPrice()*$position->quantity ?></td>
+              <td>
+                 <a href="<?= Url::to(['site/removefromcart','id'=>$position->id]) ?>">
+                    <span id="x">X</span>
+                  </a>
+              </td>
+          
              
-    </div>
+    </tr>

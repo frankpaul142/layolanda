@@ -10,7 +10,7 @@ $this->title = 'LAYOLANDA | CONCEPT_STORE';
 
         <div class="row">
             <?php foreach($products as $product): ?>
-            <div class="col-lg-4 img-home">
+            <div class="col-md-4 img-home">
                 <a  href="<?= Url::to(['product/view','id'=>$product->id]) ?>">
             <?php foreach($product->pictures as $picture): ?>
                         <div class="image">

@@ -158,11 +158,11 @@ AppAsset::register($this);
                   </li>
                 </ul>
             </div></div> -->
-    <div class="col-md-2 links-filters"><?=$form->field($searchModel,'price1'); ?></div>
-    <div class="col-md-2 links-filters"><?=$form->field($searchModel,'price2'); ?></div>
-    <div class="col-md-2 links-filters"><?= $form->field($searchModel, 'type')->DropDownList(ArrayHelper::map(type::find()->orderBy(['description' => SORT_DESC])->all(), 'id', 'title'),['title'=>'Tipo','data-style'=>'combo-select','class'=>'selectpicker','data-width'=>'100%']) ?></div> 
-    <div class="col-md-2 links-filters"><?= $form->field($searchModel, 'size')->DropDownList([''=>'Todos','S'=>'Pequeño','M'=>'Mediano','L'=>'Grande'],['title'=>'Tamaño','data-style'=>'combo-select','class'=>'selectpicker','data-width'=>'100%']) ?></div> 
-    <div class="col-md-2 links-filters"><p>&nbsp;</p><a id="search" href="javascript:void(0)"><img class="img-search" src="<?= URL::base() ?>/images/lupa.png" />&nbsp;Buscar</a></div>
+    <div class="col-xs-2 links-filters"><?=$form->field($searchModel,'price1'); ?></div>
+    <div class="col-xs-2 links-filters"><?=$form->field($searchModel,'price2'); ?></div>
+    <div class="col-xs-2 links-filters"><?= $form->field($searchModel, 'type')->DropDownList(ArrayHelper::map(type::find()->orderBy(['description' => SORT_DESC])->all(), 'id', 'title'),['title'=>'Tipo','data-style'=>'combo-select','class'=>'selectpicker','data-width'=>'100%']) ?></div> 
+    <div class="col-xs-2 links-filters"><?= $form->field($searchModel, 'size')->DropDownList([''=>'Todos','S'=>'Pequeño','M'=>'Mediano','L'=>'Grande'],['title'=>'Tamaño','data-style'=>'combo-select','class'=>'selectpicker','data-width'=>'100%']) ?></div> 
+    <div class="col-xs-2 links-filters"><p>&nbsp;</p><a id="search" href="javascript:void(0)"><span class="search-label">Buscar</span><img class="img-search2" src="<?= URL::base() ?>/images/lupa.png" /></a></div>
 <?php 
 ActiveForm::end();
 ?>

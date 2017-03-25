@@ -32,7 +32,7 @@ class Picture extends \yii\db\ActiveRecord
         return [
             [['product_id', 'creation_date', 'description'], 'required'],
             [['product_id'], 'integer'],
-            [['creation_date'], 'safe'],
+            [['creation_date','sort'], 'safe'],
             [['description'], 'string', 'max' => 150],
             [['product_id'], 'exist', 'skipOnError' => true, 'targetClass' => Product::className(), 'targetAttribute' => ['product_id' => 'id']],
         ];
