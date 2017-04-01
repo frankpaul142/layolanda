@@ -62,6 +62,7 @@ AdminAsset::register($this);
                     ['label' => 'Detalles Factura', 'url' => ['/admin/detail/index']],
                     ['label' => 'Usuarios', 'url' => ['/admin/user/index']],
                     ['label' => 'Direcciones', 'url' => ['/admin/address/index']],
+                    ['label' => 'Contenido', 'url' => ['/admin/content/index']],
                     Yii::$app->user->isGuest ?
                         ['label' => 'Login', 'url' => ['/site/login']] :
                         ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
