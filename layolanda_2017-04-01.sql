@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.17)
 # Base de datos: layolanda
-# Tiempo de Generación: 2017-03-25 06:00:19 +0000
+# Tiempo de Generación: 2017-04-01 16:11:51 +0000
 # ************************************************************
 
 
@@ -158,6 +158,33 @@ VALUES
 	(12,1,'2017-01-20 00:00:00','Abstracta');
 
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Volcado de tabla content
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `content`;
+
+CREATE TABLE `content` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL DEFAULT '',
+  `description` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `content` WRITE;
+/*!40000 ALTER TABLE `content` DISABLE KEYS */;
+
+INSERT INTO `content` (`id`, `title`, `description`)
+VALUES
+	(1,'Envío','<p>lkasdljads</p>'),
+	(2,'Contáctenos','<p>adasdasd</p>'),
+	(3,'¿Cómo Llegar?','<p>asdasdasd</p>'),
+	(4,'Políticas de Privacidad','<p>adsklasdads</p>'),
+	(5,'Términos y Condiciones de Compra','<p>hkjaskjhdas</p>');
+
+/*!40000 ALTER TABLE `content` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
