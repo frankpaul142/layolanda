@@ -10,7 +10,6 @@ $this->title = 'Actualizar dirección';
 ?>
 <div class="address-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_formaddress', [
         'model' => $model,

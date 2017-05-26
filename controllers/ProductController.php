@@ -19,6 +19,16 @@ class ProductController extends Controller
     /**
      * @inheritdoc
      */
+      public function beforeAction($action) {
+
+        if (parent::beforeAction($action)) {
+            $seoMetaTags = New \linchpinstudios\seo\models\Seo;
+            $seoMetaTags->run();
+            return true;  // or false if needed
+        } else {
+            return false;
+        }
+    }
     public function behaviors()
     {
         return [

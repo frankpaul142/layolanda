@@ -8,8 +8,10 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="user-form">
-
+<div class="user-form row">
+    <div class="Absolute-Center is-Responsive">
+    <div class="col-sm-12 col-md-10 col-md-offset-1">
+    <div id="logo-container"><h3>Regístrate</h3></div>
     <?php $form = ActiveForm::begin(); ?>
 
 
@@ -38,9 +40,10 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'confirmPassword')->passwordInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Regístrate' : 'Update', ['class' => 'btn btn-def btn-block']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
-
+    </div>
+</div>
 </div>

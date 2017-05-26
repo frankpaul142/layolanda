@@ -5,6 +5,8 @@ use yii\widgets\DetailView;
 use app\assets\AppAsset;
 use yii\web\View;
 use yii\helpers\Url;
+use app\models\Content;
+$content=Content::find()->orderBy(['sort' => SORT_ASC])->all();
 /* @var $this yii\web\View */
 /* @var $model app\models\Product */
 
@@ -92,11 +94,9 @@ AppAsset::register($this);
         <?php endforeach; ?>
           </ul>
           <ul class="nav navbar-nav politics collapse">
-                <li><a href="#">Envio</a></li>
-                <li><a href="#">Contáctenos</a></li>
-                <li><a href="#">¿Cómo Llegar?</a></li>
-                <li><a href="#">Póliticas de Privacidad</a></li>
-                <li><a href="#">Términos y Condiciones de compra</a></li>
+          <?php foreach($content as $cont): ?>
+                <li><a href="<?= Url::to(['site/content','id'=>$cont->id]) ?>"><?= $cont->title ?></a></li>
+           <?php endforeach; ?>
           </ul>
           <ul class="nav social collapse">
                 <li><a href="#"><img src="<?= URL::base() ?>/images/facebook.png" /></a></li>

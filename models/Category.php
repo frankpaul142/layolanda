@@ -32,10 +32,10 @@ class Category extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['category_id'], 'integer'],
+            [['category_id','sort'], 'integer'],
             [['creation_date', 'description'], 'required'],
             [['creation_date'], 'safe'],
-            [['description'], 'string', 'max' => 150],
+            [['description','code'], 'string', 'max' => 150],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],
         ];
     }
@@ -66,7 +66,7 @@ class Category extends \yii\db\ActiveRecord
      */
     public function getCategories()
     {
-        return $this->hasMany(Category::className(), ['category_id' => 'id']);
+        return $this->hasMany(Category::className(), ['category_id' => 'id'])->orderBy(['sort' => SORT_ASC]);;
     }
 
     /**

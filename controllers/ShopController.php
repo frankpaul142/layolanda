@@ -23,6 +23,7 @@ use app\models\Detail;
 class ShopController extends Controller
 {
     
+
     public function behaviors()
     {
         return [
@@ -57,6 +58,11 @@ class ShopController extends Controller
             $payment = $payment->execute($paymentExecution, $apiContext);
             $model->status="PAYED";
             $model->save();
+            foreach($model->details as $detail){
+                $detail->stock=$detail->stock-1;
+                $detail->save();
+            }
+
         } catch (Exception $e) {
             print_r($e);die();
         }
@@ -99,6 +105,7 @@ class ShopController extends Controller
                 $detail->product_has_mesure_type_id=$position->id;
                 $detail->bill_id=$model->getPrimaryKey();
                 $detail->price=$position->getPrice();
+                $detail->quantity=$position->quantity;
                 $detail->save();
 
             }

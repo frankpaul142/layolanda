@@ -44,6 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
              'label' =>'Tipo'
              ],
             'price',
+            'stock',
 
             // 'creation_date',
 

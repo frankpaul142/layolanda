@@ -8,37 +8,39 @@ use yii\helpers\Url;
 
 $this->title = 'Login';
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
-
-
-
-    <?php $form = ActiveForm::begin([
+<div class="site-login row">
+        <div class="Absolute-Center is-Responsive">
+      <div class="col-sm-12 col-md-10 col-md-offset-1">
+      <div id="logo-container"><h3>Login</h3></div>
+            <?php $form = ActiveForm::begin([
         'id' => 'login-form',
         'options' => ['class' => 'form-horizontal'],
         'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
+            'template' => "{label}\n<div>{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
             'labelOptions' => ['class' => 'col-lg-1 control-label'],
         ],
     ]); ?>
+          
+                        
+            <?= $form->field($model, 'username')->textInput(['placeholder'=>'email'])->label(false) ?>          
+       
+            
+                <?= $form->field($model, 'password')->passwordInput(['placeholder'=>'password'])->label(false) ?>
 
-    <?= $form->field($model, 'username') ?>
+  
 
-    <?= $form->field($model, 'password')->passwordInput() ?>
-
-    <?= $form->field($model, 'rememberMe', [
-        'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-    ])->checkbox() ?>
-
-    <div class="form-group">
-        <div class="col-lg-offset-1 col-lg-11">
-            <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-        </div>
-    </div>
-
-    <?php ActiveForm::end(); ?>
-
-    <div class="col-lg-offset-1" style="color:#999;">
-        <p>Si no tienes cuenta por favor <a href="<?= Url::to(['register']) ?>">Regístrate</a></p>
-        <p><a href="<?= Url::to(['forgot']) ?>">¿Olvidaste tu contraseña?</a></p>
+            <div class="form-group">
+               
+                    <?= Html::submitButton('Login', ['class' => 'btn btn-def btn-block', 'name' => 'login-button']) ?>
+                
+            </div>
+          <div class="form-group text-center">
+                <div  style="color:#999;">
+                    <p>Si no tienes cuenta por favor <a href="<?= Url::to(['register']) ?>">Regístrate</a></p>
+                    <p><a href="<?= Url::to(['forgot']) ?>">¿Olvidaste tu contraseña?</a></p>
+                </div>
+          </div>
+        <?php ActiveForm::end(); ?>      
+      </div>  
+    </div> 
 </div>

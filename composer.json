@@ -29,7 +29,9 @@
         "machour/yii2-notifications": "@dev",
         "paypal/rest-api-sdk-php": "*",
         "keygenqt/yii2-autocomplete-ajax": "@dev",
-        "sjaakp/yii2-alphapager": "*"
+        "sjaakp/yii2-alphapager": "*",
+        "scotthuangzl/yii2-google-chart": "dev-master",
+        "linchpinstudios/yii2-seo": "dev-master"
     },
     "require-dev": {
         "codeception/codeception": "*",

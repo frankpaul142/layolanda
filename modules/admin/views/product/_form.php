@@ -11,6 +11,7 @@ use app\models\Material;
 use app\models\Flowing;
 use yii\helpers\ArrayHelper;
 use dosamigos\tinymce\TinyMce;
+use kartik\date\DatePicker;
 /* @var $this yii\web\View */
 /* @var $model app\models\Product */
 /* @var $form yii\widgets\ActiveForm */
@@ -41,10 +42,13 @@ use dosamigos\tinymce\TinyMce;
     ]
 ]);?>
 
-    <?= $form->field($model, 'product_date')->widget(\yii\jui\DatePicker::classname(), [
-    'language' => 'es',
-    'dateFormat' => 'yyyy-MM-dd',
-]) ?>
+    <?= $form->field($model, 'product_date')->widget(DatePicker::classname(), [
+    'options' => ['placeholder' => 'Enter birth date ...'],
+    'pluginOptions' => [
+        'autoclose'=>true,
+        'format' => 'yyyy-mm-dd'
+    ]
+]);?>
 
     <?= $form->field($model, 'important')->dropDownList([ 'YES' => 'YES', 'NO' => 'NO', ], ['prompt' => '']) ?>
     <?php if(isset($pictures)){ ?>
@@ -70,7 +74,7 @@ FileInput::widget([
 
     ?>
     <?php } ?>
-
+    <?= $form->field($model, 'code')->textInput(['maxlength' => true]) ?>
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

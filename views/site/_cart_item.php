@@ -13,11 +13,10 @@ use yii\helpers\Url;
             	<?= $position->product->title ?>-<?= $position->mesure->description ?>-<?= $position->type->description ?>
 
             </td>
-            <?php if($position->id!=70000076){ ?>
+            <?php if($position->type->description=='ORIGINAL'){ ?>
             <td ><input type="text" class="change_q" readonly="readonly" posid="<?= $position->id ?>" value="<?= $position->quantity ?>" /></td>
-            
             <?php }else{ ?>
-            <td >-</td>
+            <td ><input type="number" class="change_q" posid="<?= $position->id ?>" value="<?= $position->quantity ?>" /></td>
             <?php } ?>
             <td >
               <span class="valores-p c-blue">$<?= $position->getPrice() ?></span>

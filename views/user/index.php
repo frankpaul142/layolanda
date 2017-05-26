@@ -9,12 +9,15 @@ use yii\widgets\DetailView;
 $this->title = $model->names." ".$model->lastnames;
 ?>
 <div class="user-view">
+      <div class="Absolute-Center is-Responsive">
+    <div id="logo-container"><h3><?= Html::encode($this->title) ?></h3></div>
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Actualizar Información', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+    <p style="text-align: center;">
+        <?= Html::a('Actualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Direcciones', ['address'], [
+            'class' => 'btn'
+        ]) ?>
+                <?= Html::a('Compras', ['orders'], [
             'class' => 'btn'
         ]) ?>
     </p>
@@ -30,4 +33,5 @@ $this->title = $model->names." ".$model->lastnames;
         ],
     ]) ?>
 
+</div>
 </div>

@@ -11,6 +11,8 @@ use yii\data\Sort;
 use yii\widgets\Pjax;
 use yii\helpers\ArrayHelper;
 use app\models\Type;
+use app\models\Content;
+$content=Content::find()->orderBy(['sort' => SORT_ASC])->all();
 /* @var $this yii\web\View */
 /* @var $model app\models\Category */
 
@@ -91,11 +93,9 @@ AppAsset::register($this);
         <?php endforeach; ?>
           </ul>
           <ul class="nav navbar-nav politics collapse">
-                <li><a href="#">Envio</a></li>
-                <li><a href="#">Contáctenos</a></li>
-                <li><a href="#">¿Cómo Llegar?</a></li>
-                <li><a href="#">Póliticas de Privacidad</a></li>
-                <li><a href="#">Términos y Condiciones de compra</a></li>
+          <?php foreach($content as $cont): ?>
+                <li><a href="<?= Url::to(['site/content','id'=>$cont->id]) ?>"><?= $cont->title ?></a></li>
+           <?php endforeach; ?>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -177,7 +177,7 @@ ActiveForm::end();
           </div>
         <?php break; endforeach; ?>
             <span><?= $product->title ?> (<?= date('Y',strtotime($product->product_date)) ?>)<br><?= $product->artist->name ?></span>
-            <p>desde $<?= $product->minorprice['price'] ?></p>
+            <p>$<?= $product->minorprice['price'] ?></p>
         </a>
   </div>
   <?php endforeach; ?>           

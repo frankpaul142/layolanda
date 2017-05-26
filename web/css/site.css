@@ -51,6 +51,7 @@ body {
 }
 .container{
     width: 100% !important; 
+    padding: 0;
 }
 img{
 width: 100%;
@@ -131,7 +132,7 @@ z-index: 5;
 .navbar-default {
      background-color: white; 
      border-color: white;
-     padding-left: 1%;
+/*     padding-left: 1%;*/
      color: black;
     /*     margin-top: 2%;*/
 
@@ -150,12 +151,12 @@ z-index: 5;
     min-height: 100%;
     height: auto;
     margin: 0 auto -60px;
-    padding: 0 0 60px;
+/*    padding: 0 0 60px;*/
 }
 
-.wrap > .container {
+/*.wrap > .container {
     padding: 30px 15px 20px;
-}
+}*/
 
 .footer {
     height: 60px;
@@ -255,9 +256,37 @@ font-weight: bold;
 }
 .img-home{
     text-align: center;
+    padding: 0;
+    transition: .9s ease;
 }
 .img-home img{
-    margin-bottom: 20px;
+    margin-bottom: 0px !important;
+    transition: .5s ease;
+  backface-visibility: hidden;
+  opacity: 1;
+}
+.middle {
+  transition: .9s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+.img-home:hover img {
+  opacity:0.7;
+}
+
+.img-home:hover .middle {
+  opacity: 1;
+}
+.hover-text{
+  /*background-color: black;*/
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+  opacity: 1;
 }
 .header-top{
         padding-left: 5%;
@@ -272,7 +301,7 @@ font-weight: bold;
         width: 100% !important;
     }
     .user-container-nav li{
-            margin-left: 21px !important;
+            margin-left: 14px !important;
     }
     .tt-scrollable-menu{
         width: 83% !important;
@@ -454,12 +483,13 @@ h3{
     padding-left: 17px;
 }
 .pagination{
-    padding-left: 7%;
+    display: inline-block !important;
+    text-align: center;
 }
 
 @media screen and (max-width: 1700px){
 .pagination{
-    padding-left: 7%;
+   display: inline-block !important;
 }
 }
 @media screen and (max-width: 1200px) {  
@@ -507,6 +537,12 @@ h3{
     text-align: center;
 }
 }
+@media screen and (min-width: 768px){
+.container-search-user{
+    width: 500px;
+}
+}
+
 @media screen and (min-width: 321px) and (max-width: 767px) { 
     .navbar-brand{
             display: inline-block !important;
@@ -527,6 +563,7 @@ h3{
     float: none !important;
     text-align: center !important;
     width: auto !important;
+    font-size: 9px !important;
     }
 #top-menu{
     float:none;
@@ -772,7 +809,7 @@ font-size: 5.5mm !important;
       transform: rotate(-45deg);
 }
 .paylogo{
-    width: 200px;
+    width: 150px;
 }
 .btn{
     background-color: white !important;
@@ -879,7 +916,7 @@ margin-left: 10px;
    opacity: 1;
  } 
  .category-title{
-    margin-top:0px;
+    margin-top:12px;
  }
  .filters{
         margin-bottom: 10px;
@@ -984,4 +1021,211 @@ background-color: white;
 }
 .form-control{
     border-radius: 0px;
+}
+.parallax { 
+    /* The image used */
+    
+
+    /* Set a specific height */
+    height: 600px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.products-home{
+    padding:0;
+}
+.products-home h2{
+    text-align: left;
+    margin-bottom: 3%;
+}
+.products-home div{
+    margin-bottom: 0px;
+}
+main {
+  position: relative;
+}
+
+/* Video wrap */
+.bv-video-wrap {
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.bv-video-wrap--ready {
+  display: block;
+}
+
+.bv-video-wrap::before {
+  /* Optional overlay */
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+/* Video object */
+.bv-video {
+  width: 100%;
+  height: 100%;
+}
+@-webkit-keyframes ani-mouse {
+    0% {
+    opacity: 1;
+    top: 29%;
+    }
+    15% {
+    opacity: 1;
+    top: 50%;
+    }
+    50% {
+    opacity: 0;
+    top: 50%;
+    }
+    100% {
+    opacity: 0;
+    top: 29%;
+    }
+}
+@-moz-keyframes ani-mouse {
+    0% {
+    opacity: 1;
+    top: 29%;
+    }
+    15% {
+    opacity: 1;
+    top: 50%;
+    }
+    50% {
+    opacity: 0;
+    top: 50%;
+    }
+    100% {
+    opacity: 0;
+    top: 29%;
+    }
+}
+@keyframes ani-mouse {
+    0% {
+    opacity: 1;
+    top: 29%;
+    }
+    15% {
+    opacity: 1;
+    top: 50%;
+    }
+    50% {
+    opacity: 0;
+    top: 50%;
+    }
+    100% {
+    opacity: 0;
+    top: 29%;
+    }
+}
+ .scroll-btn {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 5%;
+    text-align: center;
+}
+.scroll-btn > * {
+    display: inline-block;
+    line-height: 18px;
+    font-size: 13px;
+    font-weight: normal;
+    color: #7f8c8d;
+    color: #ffffff;
+    font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    letter-spacing: 2px;
+}
+.scroll-btn > *:hover,
+.scroll-btn > *:focus,
+.scroll-btn > *.active {
+    color: #ffffff;
+}
+.scroll-btn > *:hover,
+.scroll-btn > *:focus,
+.scroll-btn > *:active,
+.scroll-btn > *.active {
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+}
+.scroll-btn .mouse {
+    position: relative;
+    display: block;
+    width: 35px;
+    height: 55px;
+    margin: 0 auto 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 3px solid white;
+    border-radius: 23px;
+}
+.scroll-btn .mouse > * {
+    position: absolute;
+    display: block;
+    top: 29%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    margin: -4px 0 0 -4px;
+    background: white;
+    border-radius: 50%;
+    -webkit-animation: ani-mouse 2.5s linear infinite;
+    -moz-animation: ani-mouse 2.5s linear infinite;
+    animation: ani-mouse 2.5s linear infinite;
+}
+.scroll-btn p{
+ text-align: center;
+}
+.navbar-header{
+        margin-top: 2%;
+    /*margin-left: 2%;*/
+}
+div.well{
+  height: 250px;
+} 
+
+.Absolute-Center {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.Absolute-Center.is-Responsive {
+  width: 50%; 
+  height: 50%;
+  min-width: 200px;
+  max-width: 400px;
+  top:10%;
+}
+
+#logo-container{
+  margin: auto;
+  margin-bottom: 10px;
+  width:200px;
+  height:30px;
+  text-align: center;
+/*  background-image:url('http://placehold.it/200x30/000000/ffffff/&text=BRAND+LOGO');*/
+}
+.card{
+    float:left;
+        width: 100%;
+    border: 1px solid;
+    padding: 10px;
+    margin-top: 10px;
 }

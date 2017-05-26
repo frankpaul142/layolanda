@@ -39,6 +39,16 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 <div class="row">
     <div class="col-sm-4">
+        <h2>Cliente</h2>
+        <p><strong>Nombres:</strong><span><?= $model->user->names ?></span></p>
+        <p><strong>Apellidos:</strong><span><?= $model->user->lastnames ?></span></p>
+        <p><strong>Fecha de Nacimiento:</strong><span><?= $model->user->birthday ?></span></p>
+        <p><strong>Email:</strong><span><?= $model->user->username ?></span></p>
+        <p><strong>Sexo:</strong><span><?= $model->user->sex ?></span></p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
     <h2>Dirección de Envío</h2>
     <p><strong>Calle 1:</strong><span><?= $model->deliveryAddress->address_line_1 ?></span></p>
     <p><strong>Calle 2:</strong><span><?= $model->deliveryAddress->address_line_2 ?></span></p>

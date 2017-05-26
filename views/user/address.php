@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\AddressSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -10,44 +10,29 @@ use yii\grid\GridView;
 $this->title = 'Direcciones';
 ?>
 <div class="address-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+      <div class="Absolute-Center is-Responsive">
+    <div id="logo-container"><h3><?= Html::encode($this->title) ?></h3></div>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
+    <p style="text-align: center;">
         <?= Html::a('Crear Dirección', ['createaddress'], ['class' => 'btn btn-success']) ?>
     </p>
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            'address_line_1',
-            'address_line_2',
-            'type',
-            'city',
-            'province',
-            'country.country_name',
-            'zip',
-            'phone',
-            // 'province',
-            // 'country_id',
-            // 'zip',
-            // 'phone',
-            // 'user_id',
-
-
-            ['class' => 'yii\grid\ActionColumn', 'template' => '{updateaddress}',
-                              'buttons'=>[
-                              'updateaddress' => function ($url, $model) {     
-                                return Html::a('<span alt="actualizar" class="glyphicon glyphicon-pencil"></span>', $url, [
-                                        'title' => Yii::t('yii', 'Ventajas'),
-                                ]);                                
-            
-                              }
-                          ] 
-
-
-            ],
-        ],
-    ]); ?>
+    <div class="row">
+    <?php 
+foreach ($dataProvider->models as $model) { ?>
+    <div class="card" style="width:100%">
+  <div class="card-block">
+    <h4 class="card-title"><?= $model->address_line_1 ?></h4>
+    <p class="card-text"><?= $model->address_line_2 ?></p>
+    <p class="card-text"><?= $model->country->country_name ?>-<?= $model->province ?>-<?= $model->city ?></p>
+    <p class="card-text"><?= $model->zip ?>-<?= $model->phone ?></p>
+    <p class="card-text"><?= $model->type ?></p>
+    <a href="<?= Url::to(['updateaddress','id'=>$model->id]) ?>" class="btn btn-primary">Editar</a>
+  </div>
+</div>
+    <?php
+} 
+?>
+</div>
+</div>
 </div>

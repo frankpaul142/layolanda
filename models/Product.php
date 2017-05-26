@@ -44,7 +44,7 @@ class Product extends \yii\db\ActiveRecord
         return [
             [['artist_id', 'category_id', 'creation_date', 'description', 'technique_id', 'material_id', 'flowing_id'], 'required'],
             [['artist_id', 'category_id', 'technique_id', 'material_id', 'flowing_id'], 'integer'],
-            [['creation_date', 'product_date','description'], 'safe'],
+            [['creation_date', 'product_date','description','code'], 'safe'],
             [['support'], 'string', 'max' => 45],
             [['artist_id'], 'exist', 'skipOnError' => true, 'targetClass' => Artist::className(), 'targetAttribute' => ['artist_id' => 'id']],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],

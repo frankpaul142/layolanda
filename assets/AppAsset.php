@@ -30,6 +30,7 @@ class AppAsset extends AssetBundle
         'js/bootstrap.min.js',
         'js/jquery.sticky.js',
         'js/ekko-lightbox.js',
+        'js/backgroundVideo.js',
         '//assets.pinterest.com/js/pinit.js'
         
     ];

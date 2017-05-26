@@ -55,6 +55,10 @@ $config = [
             'class' => 'app\modules\admin\Module',
             'layout'=>'admin',
         ],
+           'seo' => [
+            'class' => 'linchpinstudios\seo\Module',
+            // 'layout'=>'admin',
+        ],
     ],
 ];
 

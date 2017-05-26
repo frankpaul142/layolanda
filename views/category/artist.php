@@ -20,11 +20,14 @@ JS;
 $this->registerJs($script,View::POS_END);
 AppAsset::register($this);
 ?>
-<div class="row container-category-product">
-  <div class="">
+<div style="text-align: center;margin-bottom: 50px;">
 <?= AlphaPager::widget([
     'dataProvider' => $dataProvider
 ]) ?>
+</div>
+<div class="row container-category-product" >
+  <div >
+
 
 
 <?php 

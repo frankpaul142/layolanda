@@ -9,8 +9,10 @@ use yii\helpers\ArrayHelper;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="address-form">
-
+<div class="address-form row">
+            <div class="Absolute-Center is-Responsive">
+      <div class="col-sm-12 col-md-10 col-md-offset-1">
+      <div id="logo-container"><h3>Dirección</h3></div>
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'address_line_1')->textInput(['maxlength' => true]) ?>
@@ -35,4 +37,6 @@ use yii\helpers\ArrayHelper;
 
     <?php ActiveForm::end(); ?>
 
+</div>
+</div>
 </div>

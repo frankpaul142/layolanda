@@ -29,6 +29,7 @@ class Content extends \yii\db\ActiveRecord
         return [
             [['description'], 'required'],
             [['description'], 'string'],
+            [['sort'], 'integer'],
             [['title'], 'string', 'max' => 255],
         ];
     }

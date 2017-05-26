@@ -9,15 +9,27 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ForgotForm;
 use app\models\ContactForm;
+use app\models\Content;
 use app\models\User;
 use app\models\Product;
 use app\models\Category;
+use app\models\Params;
 use app\models\ProductHasMesureType;
 use yii\helpers\Json;
 use yii\helpers\Url;
 use yii\helpers\Html;
 class SiteController extends Controller
 {
+          public function beforeAction($action) {
+
+        if (parent::beforeAction($action)) {
+            $seoMetaTags = New \linchpinstudios\seo\models\Seo;
+            $seoMetaTags->run();
+            return true;  // or false if needed
+        } else {
+            return false;
+        }
+    }
     public function behaviors()
     {
         return [
@@ -50,8 +62,9 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        $products=Product::find()->where(['important'=>'YES'])->limit(3)->all();
-        return $this->render('index',['products'=>$products]);
+        $products=Product::find()->where(['important'=>'YES'])->limit(6)->all();
+        $backgrounds=Params::find()->where(['description'=>'IMG-HOME'])->all();
+        return $this->render('index',['products'=>$products,'backgrounds'=>$backgrounds]);
     }
 
     public function actionSearch2($q = null) {
@@ -106,13 +119,19 @@ class SiteController extends Controller
             $model = ProductHasMesureType::find()->where(['id'=>$id])->one();
             if ($model) {
                 $cart->update($model,$quantity);
-                //die(print_r($cart));
+                // die(print_r($cart));
                 return $this->redirect(['viewcart']);
             }
         throw new NotFoundHttpException();
 
     }
+    public function actionContent($id){
+        $model=Content::findOne($id);
+         return $this->render('content', [
+                'model' => $model,
+            ]);
 
+    }
     public function actionViewcart(){
 
         $categories=Category::find()->where(['category_id'=>1])->all();

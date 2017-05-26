@@ -8,6 +8,9 @@ use yii\web\View;
 use yii\helpers\Url;
 use kartik\widgets\Typeahead;
 use yii\web\JsExpression;
+use app\models\Category;
+$categories=Category::find()->where(['category_id'=>NULL])->orderBy(['sort' => SORT_ASC])->all();
+
 /* @var $this \yii\web\View */
 /* @var $content string */
 
@@ -183,10 +186,13 @@ AppAsset::register($this);
                 <img alt="Brand" src="<?= URL::base() ?>/images/logosticky.png">
               </a>
         <ul class="nav navbar-nav main-menu">
+            <?php foreach($categories as $category): $id=$category->categories[0]->categories[0]->id ?>
 
-            <li><a href="<?= Url::to(['category/view','id'=>3]) ?>">Nueva Colección</a></li>
+              <li><a href="<?= Url::to(['category/subcategory','id'=>$category->categories[0]->categories[0]->id]) ?>"><?= $category->description ?></a></li>
+            <?php endforeach; ?>
+<!--             <li><a href="<?= Url::to(['category/view','id'=>3]) ?>">Nueva Colección</a></li>
             <li><a href="<?= Url::to(['category/subcategory','id'=>5]) ?>">Arte</a></li>
-            <li><a href="<?= Url::to(['category/view','id'=>2]) ?>">Artesanía Fina</a></li>
+            <li><a href="<?= Url::to(['category/view','id'=>2]) ?>">Artesanía Fina</a></li> -->
             <li><a href="<?= Url::to(['category/artist']) ?>">Artista</a></li>
         </ul>
           </div>
@@ -202,8 +208,8 @@ AppAsset::register($this);
 
     <footer class="footer">
         <div class="container">
-            <!-- <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-            <p class="pull-right"><?= Yii::powered() ?></p> -->
+<!--            <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+            <p class="pull-right"><?= Yii::powered() ?></p>  -->
         </div>
     </footer>
 

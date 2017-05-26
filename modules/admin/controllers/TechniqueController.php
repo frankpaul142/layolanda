@@ -80,7 +80,7 @@ class TechniqueController extends Controller
     public function actionCreate()
     {
         $model = new Technique();
-
+        $model->creation_date=date('Y-m-d H:i:s');
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {

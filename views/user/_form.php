@@ -8,8 +8,10 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="user-form">
-
+<div class="user-form row">
+        <div class="Absolute-Center is-Responsive">
+      <div class="col-sm-12 col-md-10 col-md-offset-1">
+      <div id="logo-container"><h3>Actualizar Información</h3></div>
     <?php $form = ActiveForm::begin(); ?>
 
 
@@ -40,4 +42,6 @@ use yii\widgets\ActiveForm;
 
     <?php ActiveForm::end(); ?>
 
+</div>
+</div>
 </div>

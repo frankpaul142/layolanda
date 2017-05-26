@@ -61,7 +61,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return [
             'id' => 'ID',
             'creation_date' => 'Creation Date',
-            'username' => 'Username',
+            'username' => 'email',
             'names' => 'Names',
             'lastnames' => 'Lastnames',
             'birthday' => 'Birthday',

@@ -32,7 +32,7 @@ class Detail extends \yii\db\ActiveRecord
     {
         return [
             [['bill_id', 'product_has_mesure_type_id', 'creation_date','price'], 'required'],
-            [['bill_id', 'product_has_mesure_type_id'], 'integer'],
+            [['bill_id', 'product_has_mesure_type_id','quantity'], 'integer'],
             [['creation_date'], 'safe'],
             [['price'], 'double'],
             [['bill_id'], 'exist', 'skipOnError' => true, 'targetClass' => Bill::className(), 'targetAttribute' => ['bill_id' => 'id']],

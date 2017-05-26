@@ -20,6 +20,16 @@ class CategoryController extends Controller
     /**
      * @inheritdoc
      */
+      public function beforeAction($action) {
+
+        if (parent::beforeAction($action)) {
+            $seoMetaTags = New \linchpinstudios\seo\models\Seo;
+            $seoMetaTags->run();
+            return true;  // or false if needed
+        } else {
+            return false;
+        }
+    }
     public function behaviors()
     {
         return [
@@ -72,7 +82,7 @@ class CategoryController extends Controller
     public function actionSubcategory($id)
     {
         $model=$this->findModel($id);
-        $categories=Category::find()->where(['category_id'=>$model->category->category_id])->all();
+        $categories=Category::find()->where(['category_id'=>$model->category->category_id])->orderBy(['sort' => SORT_ASC])->all();
         $searchModel = new ProductSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$model->id);
             $sort = new Sort([

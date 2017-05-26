@@ -19,9 +19,13 @@ class AdminAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/admin.css',
+        'css/bootstrap-select.min.css',
+        'cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/css/bootcards-desktop.min.css'
     ];
     public $js = [
-    'https://www.google.com/jsapi'
+    'https://www.google.com/jsapi',
+    'js/bootstrap.min.js',
+    'cdnjs.cloudflare.com/ajax/libs/bootcards/1.0.0/js/bootcards.min.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

@@ -3,6 +3,8 @@ use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 use app\assets\AppAsset;
 use yii\web\View;
+use app\models\Content;
+$content=Content::find()->orderBy(['sort' => SORT_ASC])->all();
 $this->title = 'Carrito de compras';
 $paypalurl=Url::to(['shop/paypal']);
 $script='$(document).ready(function() {
@@ -21,15 +23,15 @@ $script='$(document).ready(function() {
         $("[class^="+aux+"]").hide();
         $(".infod-"+id).show();
     });
-    // $(".change_q").change(function(){
-    //     var aux2= $(this).val();
-    //     var aux= $(this).attr("posid");
-    //     $.get( "updatefromcart", { id: aux, quantity: aux2 } )
-    //       .done(function( data ) {
-    //         alert( "Data Loaded: " + data );
-    //       });
+    $(".change_q").change(function(){
+        var aux2= $(this).val();
+        var aux= $(this).attr("posid");
+        $.get( "updatefromcart", { id: aux, quantity: aux2 } )
+          .done(function( data ) {
+            alert( "Data Loaded: " + data );
+          });
         
-    // });
+    });
 });
 ';
 $display="block";
@@ -69,11 +71,9 @@ AppAsset::register($this);
         <?php endforeach; ?>
           </ul>
           <ul class="nav navbar-nav politics collapse">
-                <li><a href="#">Envio</a></li>
-                <li><a href="#">Contáctenos</a></li>
-                <li><a href="#">¿Cómo Llegar?</a></li>
-                <li><a href="#">Póliticas de Privacidad</a></li>
-                <li><a href="#">Términos y Condiciones de compra</a></li>
+          <?php foreach($content as $cont): ?>
+                <li><a href="<?= Url::to(['site/content','id'=>$cont->id]) ?>"><?= $cont->title ?></a></li>
+           <?php endforeach; ?>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -211,7 +211,8 @@ AppAsset::register($this);
         </div>
     <?php endif; ?>
 		<div class="cont-fpago">
-        <h1>Pagar Con:</h1>
+        <p>Al continuar está aceptando las políticas de envío y privacidad.</p>
+        <h3>Pagar Con:</h3>
        
         	<a id="paypal" href="#" class="btn-pago"><img class="paylogo" src="<?= URL::base() ?>/images/tarjetas.png" /></a>
                
