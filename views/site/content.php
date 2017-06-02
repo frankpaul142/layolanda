@@ -7,9 +7,9 @@ $this->title = $model->title;
 ?>
 <div class="site-index">
 
-
-    <div class="body-content">
-    	 <h1><?= Html::encode($this->title) ?></h1>
+	 <?= $this->render('sidebar') ?>
+    <div class="col-sm-10 container-right">
+    	 <h3><?= Html::encode($this->title) ?></h3>
         <div class="row">
         <?= $model->description ?>
         </div>

@@ -151,7 +151,7 @@ z-index: 5;
     min-height: 100%;
     height: auto;
     margin: 0 auto -60px;
-/*    padding: 0 0 60px;*/
+    padding: 0 0 60px;
 }
 
 /*.wrap > .container {
@@ -159,12 +159,22 @@ z-index: 5;
 }*/
 
 .footer {
-    height: 60px;
-/*    background-color: #f5f5f5;
-    border-top: 1px solid #ddd;*/
+    height: auto;
+    border-top: 1px solid black; 
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
     padding-top: 20px;
+    font-size: 2.3mm;
+    text-transform: uppercase;
 }
-
+.footer h4{
+   font-size: 3.5mm; 
+}
+.footer2{
+   border-top: 1px solid grey; 
+   padding-top: 20px;  
+}
 .jumbotron {
     text-align: center;
     background-color: transparent;
@@ -275,7 +285,7 @@ font-weight: bold;
   -ms-transform: translate(-50%, -50%)
 }
 .img-home:hover img {
-  opacity:0.7;
+  opacity:0.8;
 }
 
 .img-home:hover .middle {
@@ -301,7 +311,7 @@ font-weight: bold;
         width: 100% !important;
     }
     .user-container-nav li{
-            margin-left: 14px !important;
+            margin-left: 10px !important;
     }
     .tt-scrollable-menu{
         width: 83% !important;
@@ -316,11 +326,15 @@ font-weight: bold;
 @media (min-width: 321px) and (max-width: 360px){
 
     .user-container-nav li{
-            margin-left: 11px !important;
+            margin-left: 10px !important;
     }
 }
 @media (min-width: 768px) {
-
+    .navbar-header{
+    position: absolute;
+/*    left: 1%;
+    top: 2%;*/
+}
   .sidebar-nav .navbar .navbar-collapse {
     padding: 0;
     max-height: none;
@@ -363,6 +377,7 @@ font-weight: bold;
 }
 .sidebar{
     padding:0px;
+    padding-left: 20px;
     text-transform: uppercase;
 }
 .grid-item { width: 44%;margin-left: 1%; margin-bottom: 1% }
@@ -374,7 +389,7 @@ font-weight: bold;
 
 }
 .gallery{
-    min-height: 360px;
+   /* min-height: 360px;*/
     text-align: center;
 }
 .gallery p{
@@ -513,11 +528,12 @@ h3{
     }
     .user-container-nav li{
         margin-right: 0px !important;
+        font-size: 9px;
     }
     #button-menu2{
     position: relative;
     float: right;
-    top: -194px;
+    top: -182px;
     left: 0px;
     border: none !important;
     z-index: 50;
@@ -544,6 +560,14 @@ h3{
 }
 
 @media screen and (min-width: 321px) and (max-width: 767px) { 
+    .Absolute-Center.is-Responsive {
+  padding-left: 10% !important;
+  padding-right: 10% !important;
+}
+    .sidebar{
+        margin-top: 30px !important;
+        padding: 0px !important;
+    }
     .navbar-brand{
             display: inline-block !important;
     float: none !important;
@@ -579,7 +603,7 @@ h3{
 #button-menu2{
     position: absolute;
     float: right;
-    top: -150px;
+    top: -138px;
     left: 10px;
     border: none !important;
     z-index: 50;
@@ -862,7 +886,6 @@ background-color: white;
     overflow:hidden;
     padding-bottom:100%;
     margin-bottom: 3%;
-    background-color: black;
 }
 .image img{
     position:absolute;
@@ -900,9 +923,18 @@ margin-left: 10px;
 
 }
 .bag2{
-    width: 10%;
+    width: auto;
     left: 80% !important;
     top: 75% !important;
+    visibility: hidden;
+      opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+} 
+.bag3{
+    margin:0 !important;
+    width: auto;
+    left: 90% !important;
+    top: 90% !important;
     visibility: hidden;
       opacity: 0;
     transition: visibility 0s, opacity 0.5s linear;
@@ -915,6 +947,10 @@ margin-left: 10px;
    visibility: visible;
    opacity: 1;
  } 
+   .img-home a:hover .bag3{
+   visibility: visible;
+   opacity: 1;
+ }
  .category-title{
     margin-top:12px;
  }
@@ -1192,26 +1228,25 @@ main {
 .scroll-btn p{
  text-align: center;
 }
-.navbar-header{
-        margin-top: 2%;
-    /*margin-left: 2%;*/
-}
+
 div.well{
   height: 250px;
 } 
 
 .Absolute-Center {
-  margin: auto;
+/*  margin: auto;
   position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
+  top: 0; left: 0; bottom: 0; right: 0;*/
 }
 
 .Absolute-Center.is-Responsive {
-  width: 50%; 
+/*  width: 50%; 
   height: 50%;
   min-width: 200px;
   max-width: 400px;
-  top:10%;
+  top:10%;*/
+  padding-left: 30%;
+  padding-right: 30%;
 }
 
 #logo-container{

@@ -10,7 +10,7 @@ $this->title = 'Regístrate';
 ?>
 <div class="user-create">
 
-
+    <?= $this->render('sidebar') ?>
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>

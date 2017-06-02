@@ -9,9 +9,10 @@ use yii\helpers\Url;
 $this->title = 'Login';
 ?>
 <div class="site-login row">
+        <?= $this->render('sidebar') ?>
         <div class="Absolute-Center is-Responsive">
       <div class="col-sm-12 col-md-10 col-md-offset-1">
-      <div id="logo-container"><h3>Login</h3></div>
+      <div id="logo-container"><h3>Acceso</h3></div>
             <?php $form = ActiveForm::begin([
         'id' => 'login-form',
         'options' => ['class' => 'form-horizontal'],

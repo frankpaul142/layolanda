@@ -7,7 +7,7 @@ use yii\helpers\Html;
 ?>
 <div class="user-update">
 
-
+	<?= $this->render('../site/sidebar') ?>
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>

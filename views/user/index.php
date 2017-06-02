@@ -8,7 +8,8 @@ use yii\widgets\DetailView;
 
 $this->title = $model->names." ".$model->lastnames;
 ?>
-<div class="user-view">
+<div class="user-view row">
+ <?= $this->render('../site/sidebar') ?>
       <div class="Absolute-Center is-Responsive">
     <div id="logo-container"><h3><?= Html::encode($this->title) ?></h3></div>
 

@@ -59,7 +59,9 @@ AppAsset::register($this);
             <!-- <img class="bag2" src="<?= URL::base() ?>/images/bag2.png" /> -->
               <div class="middle">
                 <div class="hover-text"><?= $product->title ?></div>
+
               </div>
+              <img class="bag3" src="<?= URL::base() ?>/images/bag2.png" />
           </div>
             <?php break; endforeach; ?>
                

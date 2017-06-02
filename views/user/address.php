@@ -10,13 +10,23 @@ use yii\helpers\Url;
 $this->title = 'Direcciones';
 ?>
 <div class="address-index">
+ <?= $this->render('../site/sidebar') ?>
       <div class="Absolute-Center is-Responsive">
     <div id="logo-container"><h3><?= Html::encode($this->title) ?></h3></div>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
+        <p style="text-align: center;">
+        <?= Html::a('Mi Perfil', ['user/index'], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Direcciones', ['address'], [
+            'class' => 'btn'
+        ]) ?>
+                <?= Html::a('Compras', ['orders'], [
+            'class' => 'btn'
+        ]) ?>
+    </p>
     <p style="text-align: center;">
         <?= Html::a('Crear Dirección', ['createaddress'], ['class' => 'btn btn-success']) ?>
     </p>
+
     <div class="row">
     <?php 
 foreach ($dataProvider->models as $model) { ?>

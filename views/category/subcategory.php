@@ -97,6 +97,12 @@ AppAsset::register($this);
                 <li><a href="<?= Url::to(['site/content','id'=>$cont->id]) ?>"><?= $cont->title ?></a></li>
            <?php endforeach; ?>
           </ul>
+          <ul class="nav social collapse">
+                <li><a href="#"><img src="<?= URL::base() ?>/images/facebook.png" /></a></li>
+                <li><a href="#"><img src="<?= URL::base() ?>/images/twitter.png" /></a></li>
+                <!-- <li><a href="#"><img src="<?= URL::base() ?>/images/instagram.svg" /></a></li> -->
+                <li><a href="#"><img src="<?= URL::base() ?>/images/pinterest.png" /></a></li>
+          </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>

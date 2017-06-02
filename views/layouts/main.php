@@ -9,7 +9,9 @@ use yii\helpers\Url;
 use kartik\widgets\Typeahead;
 use yii\web\JsExpression;
 use app\models\Category;
+use app\models\Content;
 $categories=Category::find()->where(['category_id'=>NULL])->orderBy(['sort' => SORT_ASC])->all();
+$contents=Content::find()->orderBy(['sort' => SORT_ASC])->all();
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -203,13 +205,34 @@ AppAsset::register($this);
             ]) ?>
             <?= $content ?>
         </div>
-        <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
+<!--         <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a> -->
     </div>
 
     <footer class="footer">
-        <div class="container">
-<!--            <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-            <p class="pull-right"><?= Yii::powered() ?></p>  -->
+        <div class="container row">
+        <div class="col-sm-3">
+          <h4>Síguenos</h4>
+            <p><a href="">Facebook</a></p>
+            <p><a href="">Twitter</a></p>
+            <p><a href="">Pinterest</a></p>
+            <p><a href="">Instagram</a></p>
+        </div>
+          <div class="col-sm-3">
+          <h4>Políticas y Empresa</h4>
+          <?php foreach($contents as $cont): ?>
+            <p><a href="<?= Url::to(['site/content','id'=>$cont->id]) ?>"><?= $cont->title ?></a></p>
+        <?php endforeach ?>
+          </div>
+        </div>
+        <div class="footer2 row">
+          <div class="col-sm-6">
+            <p>ECUADOR</p>
+            <p>LA YOLANDA <?= date('Y') ?> Todos los derechos reservados</p>
+            </div>
+            <div class="col-sm-6" style="text-align: right;">
+            <p><a>ESPAÑOL</a></p>
+            <p><a>INGLÉS</a></p>
+            </div>
         </div>
     </footer>
 

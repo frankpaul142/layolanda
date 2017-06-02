@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Address;
+use app\models\Bill;
 use app\models\AddressSearch;
 use yii\filters\AccessControl;
 /**
@@ -24,11 +25,11 @@ class UserController extends Controller
         return [
                                         'access' => [
            'class' => AccessControl::className(),
-           'only' => ['index', 'update', 'address', 'createaddress','updateaddress'],
+           'only' => ['index', 'update', 'address', 'createaddress','updateaddress','orders','detail'],
            'rules' => [
 
                [
-                   'actions' => ['index','update','address','createaddress','updateaddress'],
+                   'actions' => ['index','update','address','createaddress','updateaddress','orders','detail'],
                    'allow' => true,
                    'roles' => ['@'],
                ],
@@ -128,6 +129,26 @@ class UserController extends Controller
                 'model' => $model,
             ]);
         }
+    }
+    public function actionOrders(){
+           $id=Yii::$app->user->identity->id;
+                $model = $this->findModel($id);
+                return $this->render('orders', [
+                    'model' => $model,
+                ]);
+    }
+      public function actionDetail($id)
+    {
+        $model = Bill::find()->where(['id'=>$id,'user_id'=>Yii::$app->user->identity->id])->one();
+        if(!$model){
+            Yii::$app->getSession()->setFlash('warning','Detalle de compra no encontrado.');
+           return $this->redirect(['index']); 
+        } 
+
+            return $this->render('detail', [
+                'model' => $model,
+            ]);
+        
     }
     /**
      * Deletes an existing User model.

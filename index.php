@@ -38,7 +38,7 @@ article {
 
 h1 {
   position: absolute;
-  top: 60%;
+  top: 80%;
   width: 100%;
   font-size: 36px;
   letter-spacing: 3px;
@@ -65,15 +65,15 @@ img{
     position: absolute;
 }
 article span a{
-    margin-right: 10%;
+   /* margin-right: 10%;*/
 }
 .text-left{
     float: left;
-    margin-left: 30%;
+    margin-left: 40%;
 }
 .text-right{
     float: right;
-    margin-right: 30%;
+    margin-right: 40%;
 }
     </style>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>

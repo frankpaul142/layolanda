@@ -9,7 +9,7 @@ use yii\helpers\Html;
 
 ?>
 <div class="address-create">
-
+	 <?= $this->render('../site/sidebar') ?>
     <?= $this->render('_formaddress', [
         'model' => $model,
     ]) ?>

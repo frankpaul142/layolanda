@@ -134,8 +134,8 @@ class SiteController extends Controller
     }
     public function actionViewcart(){
 
-        $categories=Category::find()->where(['category_id'=>1])->all();
-        return $this->render('cart',['categories'=>$categories]);   
+        
+        return $this->render('cart');   
     }
 
     public function actionLogout()

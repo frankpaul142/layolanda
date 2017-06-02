@@ -10,7 +10,7 @@ $this->title = 'Actualizar dirección';
 ?>
 <div class="address-create">
 
-
+	<?= $this->render('../site/sidebar') ?>
     <?= $this->render('_formaddress', [
         'model' => $model,
     ]) ?>
